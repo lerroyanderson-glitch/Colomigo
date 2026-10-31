@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/refinements.css">
+  <script src="assets/booking.js" defer></script>
   <script src="assets/site.js" defer></script>
 </head>
 <body>
@@ -21,17 +23,17 @@
 <div class="utility"><div class="shell">Colocation & connectivity advisors <span>Independent thinking. Practical guidance.</span></div></div>
 <header class="header">
   <div class="shell nav-row">
-    <a class="brand" href="#top" aria-label="Colo-Migo home"><img src="assets/mark.svg" width="39" height="39" alt=""><span>Colo-Migo</span></a>
+    <a class="brand" href="#top" aria-label="Colo-Migo home"><img src="assets/mark.svg" width="39" height="39" alt=""><span><span class="brand-colo">Colo-</span>Migo</span></a>
     <nav class="desktop-nav" aria-label="Main navigation"><a href="#services">Services</a><a href="#approach">Our approach</a><a href="#about">About</a></nav>
-    <a class="button button-outline nav-contact" href="mailto:leroy@colomigo.com?subject=Let%E2%80%99s%20talk%20infrastructure">Let’s talk <span aria-hidden="true">↗</span></a>
+    <a class="button button-outline nav-contact" href="#schedule">Let’s talk <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" hidden aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
   </div>
-  <nav id="mobile-nav" class="mobile-nav shell" aria-label="Mobile navigation" hidden><a href="#services">Services</a><a href="#approach">Our approach</a><a href="#about">About</a><a href="#contact">Let’s talk ↗</a></nav>
+  <nav id="mobile-nav" class="mobile-nav shell" aria-label="Mobile navigation" hidden><a href="#services">Services</a><a href="#approach">Our approach</a><a href="#about">About</a><a href="#schedule">Let’s talk ↗</a></nav>
 </header>
 <main id="main">
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="hero-photo">
-    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Server cabinets lining a data center corridor" width="1600" height="1200" fetchpriority="high">
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" srcset="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=960&amp;q=85 960w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=1600&amp;q=85 1600w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=2400&amp;q=85 2400w, https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=3200&amp;q=85 3200w" sizes="(max-width: 760px) 100vw, (max-width: 1500px) 60vw, calc(100vw - 650px)" alt="Server cabinets lining a data center corridor" width="1600" height="1200" fetchpriority="high">
     <div class="photo-shade"></div><span class="photo-label">Space. Power. Connection.</span><span class="crosshair" aria-hidden="true"></span>
   </div>
   <div class="shell hero-shell">
@@ -40,7 +42,7 @@
       <p class="eyebrow hero-eyebrow">A partner in your next move</p>
       <h1 id="hero-title">Infrastructure<br>decisions.<br>A clearer way<br><em>forward.</em></h1>
       <p class="hero-description">Colocation and connectivity guidance, from your first requirements to your next deployment.</p>
-      <a class="button button-solid" href="#contact">Discuss your project <span aria-hidden="true">↗</span></a>
+      <a class="button button-solid" href="#schedule">Discuss your project <span aria-hidden="true">↗</span></a>
       <p class="hero-footnote">Colocation <span>/</span> Connectivity <span>/</span> Deployment coordination</p>
     </div>
   </div>
@@ -69,12 +71,32 @@
   <div class="about-title"><p class="eyebrow"><span>03</span> / The person behind the process</p><h2 id="about-title">Built on hands-on<br>data center experience.</h2><span class="accent-line" aria-hidden="true"></span></div>
   <div class="about-copy"><p class="lead">Technical details matter.<br>So does having someone follow through.</p><p>Colo-Migo is led by LeRoy Anderson, whose background spans customer success, service delivery, power and cross-connect orders, and implementation coordination.</p><p>That experience shapes our approach: ask thoughtful questions, make requirements clear, and stay focused on what needs to happen next.</p><div class="founder"><span class="founder-monogram" aria-hidden="true">LA</span><div><strong>LeRoy Anderson</strong><span>Founder, Colo-Migo</span></div></div></div>
 </section>
+<section class="scheduling shell section" id="schedule" aria-labelledby="schedule-title">
+  <div class="scheduling-intro">
+    <p class="eyebrow"><span>04</span> / A good place to begin</p>
+    <h2 id="schedule-title">Good decisions start<br>with a conversation.</h2>
+    <p>Planning a renewal, a relocation, or your next deployment? Let’s talk through your requirements, timing, and the next steps that make sense for your business.</p>
+    <div class="call-details"><span>30-minute introduction</span><span>Denver &amp; Dallas</span><span>No obligation</span></div>
+  </div>
+  <div class="booking-panel">
+    <p class="eyebrow">Your project. A clear next step.</p>
+    <h3>Let’s talk through<br>what you need.</h3>
+    <p id="booking-description">Send a few times that work for you, along with a little about your project. LeRoy will follow up to arrange a conversation.</p>
+    <a class="button button-solid" id="book-call" href="mailto:leroy@colomigo.com?subject=Colo-Migo%2030-minute%20introductory%20call&amp;body=Hello%20LeRoy%2C%0A%0AI%20would%20like%20to%20arrange%20a%2030-minute%20introductory%20call.%0A%0AMy%20company%3A%0AMy%20project%3A%0APreferred%20times%20and%20time%20zone%3A%0A%0AThank%20you%2C">Request a call by email <span aria-hidden="true">↗</span></a>
+    <small id="booking-note">Include your time zone so we can find a convenient time.</small>
+  </div>
+  <div class="booking-calendar" id="booking-calendar" hidden>
+    <p>Choose a time below, or <a id="booking-external" target="_blank" rel="noopener noreferrer">open the booking page in a new tab</a>.</p>
+    <div class="calendly-inline-widget" id="calendly-inline" aria-label="Book a Colo-Migo introductory call"></div>
+    <p class="booking-status" id="booking-status" role="status"></p>
+  </div>
+</section>
 <section class="contact section" id="contact" aria-labelledby="contact-title">
-  <div class="shell contact-grid"><div><p class="eyebrow"><span>04</span> / Start a conversation</p><h2 id="contact-title">Let’s find<br>your <em>next move.</em></h2><p>Planning a renewal, relocation, or expansion?<br>Let’s talk through what you need.</p><a class="email-link" href="mailto:leroy@colomigo.com">leroy@colomigo.com <span aria-hidden="true">↗</span></a><button class="text-button" id="copy-email" type="button" hidden>Copy email address</button><span class="copy-status" id="copy-status" role="status"></span></div><div class="contact-panel"><p class="eyebrow">A good place to begin</p><h3>Tell us a little<br>about your project.</h3><p>Your preferred location, approximate space and power needs, and target timeline are enough to start. It’s fine if some details are still taking shape.</p><a class="button button-solid" id="open-brief" href="mailto:leroy@colomigo.com?subject=Colo-Migo%20project%20inquiry">Start a project brief <span aria-hidden="true">↗</span></a><small>Start by email. No obligation to choose a provider.</small></div></div>
+  <div class="shell contact-grid"><div><p class="eyebrow"><span>05</span> / Prefer to write?</p><h2 id="contact-title">Let’s find<br>your <em>next move.</em></h2><p>Planning a renewal, relocation, or expansion?<br>Let’s talk through what you need.</p><a class="email-link" href="mailto:leroy@colomigo.com">leroy@colomigo.com <span aria-hidden="true">↗</span></a><button class="text-button" id="copy-email" type="button" hidden>Copy email address</button><span class="copy-status" id="copy-status" role="status"></span></div><div class="contact-panel"><p class="eyebrow">A good place to begin</p><h3>Tell us a little<br>about your project.</h3><p>Your preferred location, approximate space and power needs, and target timeline are enough to start. It’s fine if some details are still taking shape.</p><a class="button button-solid" id="open-brief" href="mailto:leroy@colomigo.com?subject=Colo-Migo%20project%20inquiry">Start a project brief <span aria-hidden="true">↗</span></a><small>Start by email. No obligation to choose a provider.</small></div></div>
 </section>
 </main>
-<footer class="footer shell"><div class="footer-top"><a class="brand" href="#top"><img src="assets/mark.svg" width="32" height="32" alt=""><span>Colo-Migo</span></a><p class="eyebrow">Colocation & connectivity advisors</p><a href="mailto:leroy@colomigo.com">Let’s connect ↗</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Colo-Migo. All rights reserved.</span><button class="text-button" id="privacy-open" type="button" hidden>Privacy</button><span>Thoughtful guidance. Solid foundations.</span></div></footer>
+<footer class="footer shell"><div class="footer-top"><a class="brand" href="#top" aria-label="Colo-Migo home"><img src="assets/mark.svg" width="32" height="32" alt=""><span><span class="brand-colo">Colo-</span>Migo</span></a><p class="eyebrow">Colocation & connectivity advisors</p><a href="#schedule">Let’s connect ↗</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Colo-Migo. All rights reserved.</span><button class="text-button" id="privacy-open" type="button" hidden>Privacy</button><span>Thoughtful guidance. Solid foundations.</span></div></footer>
 <dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialog-heading"><p class="eyebrow">Your next move</p><button class="dialog-close" type="button" aria-label="Close project brief">×</button></div><h2 id="brief-title">Let’s start with<br>the essentials.</h2><p class="dialog-description">This prepares an email in your own email app. Nothing is submitted or saved by this website.</p><form id="brief-form"><label>Company<input name="company" autocomplete="organization" maxlength="150" required></label><div class="form-row"><label>Project type<select name="project"><option>Colocation</option><option>Connectivity</option><option>Colocation + connectivity</option><option>Deployment coordination</option><option>Still exploring</option></select></label><label>Preferred market<input name="market" placeholder="e.g. Denver or Dallas" maxlength="150"></label></div><div class="form-row"><label>Space / power needs<input name="capacity" placeholder="e.g. 2 cabinets, 6 kW each" maxlength="150"></label><label>Target timeline<input name="timeline" placeholder="e.g. Q1 next year" maxlength="150"></label></div><label>Anything else we should know?<textarea name="details" rows="3" maxlength="2000" placeholder="Your goals, must-haves, or questions"></textarea></label><button class="button button-solid" type="submit">Draft project email <span aria-hidden="true">↗</span></button><p id="brief-status" role="status" class="form-status"></p></form></dialog>
-<dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-heading"><p class="eyebrow">A clear approach</p><button class="dialog-close" type="button" aria-label="Close privacy notice">×</button></div><h2 id="privacy-title">Your privacy.</h2><div class="privacy-copy"><p>This website does not set analytics or advertising cookies and does not store project-brief entries. The brief tool prepares an email through your own email application; you choose whether to send it.</p><p>If you email Colo-Migo, we use the information you provide to respond to your inquiry and discuss your project. Please avoid sending passwords, confidential provider documents, or sensitive infrastructure details in an initial inquiry.</p><p>Google Fonts and an Unsplash-hosted image are loaded from external providers, which receive normal connection information. Your email provider and the website hosting provider may also process technical connection information under their respective policies.</p><p>Questions or requests about information you have shared: <a href="mailto:leroy@colomigo.com">leroy@colomigo.com</a>.</p><small>Last updated October 27, 2026.</small></div></dialog>
+<dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-heading"><p class="eyebrow">A clear approach</p><button class="dialog-close" type="button" aria-label="Close privacy notice">×</button></div><h2 id="privacy-title">Your privacy.</h2><div class="privacy-copy"><p>Colo-Migo does not use analytics or advertising cookies on this page and does not store project-brief entries. The brief tool prepares an email through your own email application; you choose whether to send it.</p><p>If you email Colo-Migo, we use the information you provide to respond to your inquiry and discuss your project. Please avoid sending passwords, confidential provider documents, or sensitive infrastructure details in an initial inquiry.</p><p>Google Fonts and an Unsplash-hosted image are loaded from external providers, which receive normal connection information. Your email provider and the website hosting provider may also process technical connection information under their respective policies.</p><p>If you choose online booking, Calendly processes the information you enter and may use cookies under its own privacy policy. The booking calendar is loaded only when you choose to open it. You can also arrange a call by email.</p><p>Questions or requests about information you have shared: <a href="mailto:leroy@colomigo.com">leroy@colomigo.com</a>.</p><small>Last updated October 30, 2026.</small></div></dialog>
 </body>
 </html>
