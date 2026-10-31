@@ -65,10 +65,6 @@
 .about { display: block; }
 .about h2 { max-width: none; }
 .about-copy {
-  display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1.65fr);
-  gap: clamp(32px, 4vw, 96px);
-  max-width: none;
   padding-top: 28px;
 }
 .about-copy .lead { font-size: clamp(30px, 1.5vw, 40px); max-width: 32ch; }
@@ -76,14 +72,17 @@
 .about-story p + p { margin-top: 20px; }
 .founder strong { font-size: 15px; }
 .founder div > span { font-size: 14px; }
-.about, .contact-grid { gap: clamp(40px, 6vw, 105px); }
 
 .scheduling { display: block; }
-.scheduling-content, .contact-grid {
+.about-copy, .scheduling-content, .contact-grid {
   display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1.65fr);
-  gap: clamp(32px, 4vw, 96px);
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
+  gap: clamp(28px, 3vw, 56px);
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
 }
+.section-heading { width: 100%; max-width: 1400px; margin-inline: auto; }
 .section-content { padding-top: 28px; }
 .section-heading h2 { margin: 24px 0 0; }
 .section-heading > .accent-line { margin: 24px 0 0; }
