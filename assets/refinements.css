@@ -11,7 +11,8 @@
   margin-inline: auto;
 }
 
-.brand .brand-colo { color: var(--brand-red); }
+.brand .brand-colo { color: var(--ink); }
+.brand .brand-migo { color: var(--brand-red); }
 .text-accent { color: var(--brand-red); }
 .menu-toggle, .mobile-nav { display: none; }
 .nav-row { min-height: 94px; }
@@ -112,6 +113,9 @@
 .content-card {
   position: relative;
   align-self: start;
+  justify-self: start;
+  width: 100%;
+  max-width: 760px;
   padding: 36px 38px;
   margin-top: 0;
   border: 1px solid var(--line);
