@@ -93,51 +93,12 @@ function getCalendlyUrl(value) {
 const schedulingUrl = getCalendlyUrl(window.COLOMIGO_BOOKING?.url);
 if (schedulingUrl) {
   const bookCall = document.getElementById('book-call');
-  const calendarPanel = document.getElementById('booking-calendar');
-  const bookingStatus = document.getElementById('booking-status');
-  const externalLink = document.getElementById('booking-external');
-  let calendarLoading = false;
-
   bookCall.href = schedulingUrl;
+  bookCall.target = '_blank';
+  bookCall.rel = 'noopener noreferrer';
   bookCall.childNodes[0].textContent = 'Choose a time ';
-  bookCall.setAttribute('aria-controls', 'booking-calendar');
-  bookCall.setAttribute('aria-expanded', 'false');
-  externalLink.href = schedulingUrl;
   document.getElementById('booking-description').textContent =
     'Find a time that works for you. We’ll discuss your project, answer your questions, and agree on a useful next step.';
   document.getElementById('booking-note').textContent =
-    'Times are shown in your local time zone. Booking is handled by Calendly.';
-
-  bookCall.addEventListener('click', event => {
-    event.preventDefault();
-    calendarPanel.hidden = false;
-    bookCall.setAttribute('aria-expanded', 'true');
-    calendarPanel.scrollIntoView({ behavior:
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      block: 'start'
-    });
-    if (calendarLoading) return;
-    calendarLoading = true;
-    bookingStatus.textContent = 'Loading available times…';
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    script.onload = () => {
-      if (!window.Calendly?.initInlineWidget) {
-        bookingStatus.textContent = 'Please use the booking-page link above to choose a time.';
-        return;
-      }
-      window.Calendly.initInlineWidget({
-        url: schedulingUrl,
-        parentElement: document.getElementById('calendly-inline')
-      });
-      bookingStatus.textContent =
-        'If the calendar does not appear, use the booking-page link above.';
-    };
-    script.onerror = () => {
-      bookingStatus.textContent =
-        'The calendar could not load. Use the booking-page link above, or email leroy@colomigo.com.';
-    };
-    document.head.appendChild(script);
-  });
+    'Opens Calendly in a new tab. Times are shown in your local time zone.';
 }

@@ -68,11 +68,6 @@
 .booking-panel > p:not(.eyebrow) { max-width: 46ch; font-size: 13px; color: var(--muted); }
 .booking-panel .button { margin-top: 25px; max-width: 100%; gap: 18px; }
 .booking-panel small { display: block; font-size: 10px; color: var(--muted); margin-top: 14px; }
-.booking-calendar { grid-column: 1 / -1; border: 1px solid var(--line); background: var(--paper); }
-.booking-calendar > p { padding: 18px 24px; font-size: 12px; }
-.booking-calendar > p a { text-decoration: underline; text-underline-offset: 3px; }
-.calendly-inline-widget { min-width: 280px; height: 740px; }
-.booking-status { padding: 0 24px 18px; font-size: 12px; color: var(--muted); }
 
 @media (min-width: 1600px) {
   .hero { min-height: 760px; }
@@ -104,8 +99,6 @@
   .scheduling { grid-template-columns: 1fr; gap: 28px; }
   .scheduling h2 { font-size: 42px; }
   .booking-panel { padding: 28px; }
-  .booking-calendar > p { padding: 16px; }
-  .calendly-inline-widget { height: 780px; }
 }
 
 @media (max-width: 390px) {
