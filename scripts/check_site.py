@@ -43,7 +43,8 @@ for ref in page.refs:
         if ref[1:] not in page.ids:
             errors.append("Missing anchor target: " + ref)
     elif not urlsplit(ref).scheme and not ref.startswith("//"):
-        if not (ROOT / urlsplit(ref).path).is_file():
+        target = ROOT / urlsplit(ref).path.lstrip('/')
+        if not target.is_file() and not (target / 'index.html').is_file():
             errors.append("Missing local asset: " + ref)
 for phrase in ('name="viewport"', 'id="brief-form"', 'leroy@colomigo.com'):
     if phrase not in html:
