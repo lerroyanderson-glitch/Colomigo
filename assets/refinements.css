@@ -14,6 +14,7 @@
 .brand .brand-colo { color: var(--ink); }
 .brand .brand-migo { color: var(--brand-red); }
 .text-accent { color: var(--brand-red); }
+.service-link { display: inline-block; margin-top: 22px; font-size: 15px; text-decoration: underline; text-underline-offset: 5px; line-height: 1.6; }
 .menu-toggle, .mobile-nav { display: none; }
 .nav-row { min-height: 94px; }
 
