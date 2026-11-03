@@ -22,6 +22,8 @@
 .hero-copy { max-width: min(46vw, 620px); padding-top: 66px; }
 .hero h1 { font-size: clamp(64px, 6.1vw, 100px); }
 .hero-description { max-width: 370px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; padding-bottom: 20px; }
+.approach .section-intro { grid-template-columns: 1fr; }
 .hero-photo {
   left: min(43%, 650px);
   right: 0;
@@ -174,3 +176,4 @@
   .brand { gap: 8px; }
   .brand span { font-size: 30px; }
 }
+
