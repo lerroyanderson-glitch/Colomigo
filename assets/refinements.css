@@ -73,6 +73,11 @@
 .about-copy .lead { font-size: clamp(30px, 1.5vw, 40px); max-width: 32ch; }
 .about-story p { max-width: 70ch; font-size: clamp(17px, .75vw, 20px); color: var(--muted); }
 .about-story p + p { margin-top: 20px; }
+.customer-benefits { list-style: none; padding: 0; margin: 24px 0 0; }
+.customer-benefits li { max-width: 70ch; padding-block: 14px; border-top: 1px solid var(--line); font-size: clamp(17px, .75vw, 20px); color: var(--muted); }
+.customer-benefits strong { color: var(--ink); }
+.about-story .network-note { margin-top: 18px; font-size: 13px; line-height: 1.65; }
+.network-note a { text-decoration: underline; text-underline-offset: 3px; }
 .founder strong { font-size: 15px; }
 .founder div > span { font-size: 14px; }
 
