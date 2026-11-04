@@ -23,7 +23,7 @@ This repository contains source code; a commit or pull request is not proof of d
 
 ## About and editorial pages
 
-- `/about/` introduces LeRoy Anderson, his career, an anonymized CoreSite example, the Colo-Migo mission, family and interests, and volunteering. Career material is owner supplied; the profile photograph and selected recommendation excerpts come from his LinkedIn profile. The featured Google Project Management Professional Certificate links to its verified Credly record. Individual course certificates are labeled separately.
+- `/about/` introduces LeRoy Anderson, his career, an anonymized data center operations example, the Colo-Migo mission, family and interests, and volunteering. Career material is owner supplied; the profile photograph and selected recommendation excerpts come from his LinkedIn profile. The featured Google Project Management Professional Certificate links to its verified Credly record. Individual course certificates are labeled separately.
 - The homepage remains focused on the advisory services. The navigation opens a dedicated About page, and the former “Why Colo-Migo?” hero button has been removed.
 - Insights leads with company editorial analysis credited to Colo-Migo Staff, followed by three supporting stories. `assets/insights-sources.mjs` excludes their source URLs from the compact additional headlines, including tracking and trailing-slash variants.
 - The FIELD NOTE poll answers the issue's capacity question. The separate buyer poll asks about planning priorities and provides a practical next step. Both show answer counts alongside percentages after a confirmed ballot.
