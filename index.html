@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#252b28">
-  <meta name="description" content="Colocation renewal and relocation guidance for businesses in Denver and Dallas. Get a requirements brief, provider quote comparison, and clear next steps.">
+  <meta name="description" content="Colocation renewal and relocation guidance for businesses nationwide. Get a requirements brief, provider quote comparison, and clear next steps.">
   <link rel="canonical" href="https://colomigo.com/">
   <meta property="og:title" content="Colocation Renewals &amp; Relocations | Colo-Migo">
   <meta property="og:description" content="Renewing or relocating your colocation? Clarify requirements, compare available provider quotes, and plan your next step with Colo-Migo.">
@@ -17,7 +17,7 @@
   <meta property="og:image:alt" content="Colo-Migo — Colocation and Connectivity Advisors. Renewals. Relocations. A clearer next step.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Colocation Renewals &amp; Relocations | Colo-Migo">
-  <meta name="twitter:description" content="Colocation and connectivity guidance for renewals and relocations in Denver and Dallas.">
+  <meta name="twitter:description" content="Colocation and connectivity guidance for renewals and relocations nationwide.">
   <meta name="twitter:image" content="https://colomigo.com/assets/social-card.png">
   <meta name="twitter:image:alt" content="Colo-Migo — Colocation and Connectivity Advisors">
   <title>Colocation Renewals &amp; Relocations | Colo-Migo</title>
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="assets/refinements.css">
   <script src="assets/booking.js" defer></script>
   <script src="assets/site.js" defer></script>
-  <script type="application/ld+json">
-{
+  <script src="assets/provider-ticker.js" defer></script>
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -50,16 +50,10 @@
         "@type": "Person",
         "name": "LeRoy Anderson"
       },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Denver"
-        },
-        {
-          "@type": "City",
-          "name": "Dallas"
-        }
-      ]
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      }
     },
     {
       "@type": "WebSite",
@@ -72,15 +66,14 @@
       "inLanguage": "en-US"
     }
   ]
-}
-  </script>
+}</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div class="utility"><div class="shell">Colocation & connectivity advisors <span>Independent thinking. Practical guidance.</span></div></div>
+<div class="utility"><div class="shell">Independent thinking. Practical guidance.</div></div>
 <header class="header">
   <div class="shell nav-row">
-    <a class="brand" href="#top" aria-label="Colo-Migo home"><img src="assets/mark.svg" width="39" height="39" alt=""><span><span class="brand-colo">Colo-</span><span class="brand-migo">Migo</span></span></a>
+    <div class="brand-lockup"><a class="brand" href="#top" aria-label="Colo-Migo home"><img src="assets/mark.svg" width="39" height="39" alt=""><span><span class="brand-colo">Colo-</span><span class="brand-migo">Migo</span></span></a><span class="brand-tagline">Colocation &amp; Connectivity Advisors</span></div>
     <nav class="desktop-nav" aria-label="Main navigation"><a href="/colocation-renewals/">Renewals</a><a href="/colocation-relocations/">Relocations</a><a href="#approach">Our approach</a><a href="#about">About</a></nav>
     <a class="button button-outline nav-contact" href="#schedule">Let’s talk</a>
     <button class="menu-toggle" hidden aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
@@ -96,7 +89,6 @@
   <div class="shell hero-shell">
     <div class="hero-copy">
       <span class="crosshair hero-cross" aria-hidden="true"></span>
-      <p class="eyebrow hero-eyebrow">Colocation &amp; connectivity</p>
       <h1 id="hero-title">Your next<br>colocation decision.<br><em>Made <span class="text-accent">clearer.</span></em></h1>
       <p class="hero-description">Compare colocation and connectivity options for your renewal or relocation, with practical guidance.</p>
       <div class="hero-actions">
@@ -127,9 +119,9 @@
   </div>
 </section>
 <section class="about shell section" id="about" aria-labelledby="about-title">
-  <div class="about-title section-heading"><p class="eyebrow"><span>03</span> / Personal guidance. Broader reach.</p><h2 id="about-title">Why <span class="text-accent">Colo-Migo?</span></h2><span class="accent-line" aria-hidden="true"></span></div>
+  <div class="about-title section-heading"><p class="eyebrow"><span>03</span> / Personal guidance. Broader reach.</p><h2 id="about-title">Why Colo-<span class="text-accent">Migo?</span></h2><span class="accent-line" aria-hidden="true"></span></div>
   <div class="about-copy">
-    <div class="about-summary"><p class="lead">Personal guidance.<br>Broader reach.<br>A clearer decision.</p><div class="founder"><span class="founder-monogram" aria-hidden="true">LA</span><div><strong>LeRoy Anderson</strong><span>Founder, Colo-Migo</span></div></div></div>
+    <div class="about-summary"><p class="lead">Personal guidance.<br>Broader reach.<br>A clearer decision.</p><div class="provider-network"><div class="provider-ticker-heading"><p class="eyebrow">A selection of provider options</p><button type="button" class="ticker-control" aria-label="Pause provider ticker" hidden>Pause</button></div><div class="provider-ticker"><div class="provider-track"><ul class="provider-group"><li>CoreSite</li><li>Equinix</li><li>DataBank</li><li>Flexential</li><li>TierPoint</li><li>Cologix</li><li>Evocative</li><li>AT&amp;T</li><li>Lumen</li><li>Zayo</li><li>Arelion</li><li>FirstLight</li><li>Bluebird Fiber</li><li>LOGIX Fiber Networks</li><li>Skywire Networks</li><li>Syringa Networks</li><li>Arctic Wolf</li><li>Blue Mantis</li><li>LevelBlue</li><li>Vonage</li></ul><ul class="provider-group" aria-hidden="true"><li>CoreSite</li><li>Equinix</li><li>DataBank</li><li>Flexential</li><li>TierPoint</li><li>Cologix</li><li>Evocative</li><li>AT&amp;T</li><li>Lumen</li><li>Zayo</li><li>Arelion</li><li>FirstLight</li><li>Bluebird Fiber</li><li>LOGIX Fiber Networks</li><li>Skywire Networks</li><li>Syringa Networks</li><li>Arctic Wolf</li><li>Blue Mantis</li><li>LevelBlue</li><li>Vonage</li></ul></div></div><p class="provider-note">Available services and fit are confirmed for your project.</p></div></div>
     <div class="about-story content-card">
       <p>Colo-Migo combines hands-on data center experience with access to a broad network of colocation and connectivity providers, research tools and technical resources.</p>
       <ul class="customer-benefits">
@@ -150,7 +142,7 @@
   <div class="scheduling-content section-content">
     <div class="scheduling-intro">
       <p>Use a 30-minute introduction to discuss your renewal or relocation, the dates that matter, and what you need from a provider. We’ll identify the information needed for a useful next step.</p>
-      <div class="call-details"><span>30-minute introduction</span><span>Denver &amp; Dallas</span><span>No obligation</span></div>
+      <div class="call-details"><span>30-minute introduction</span><span>Nationwide sourcing</span><span>No obligation</span></div>
     </div>
     <div class="booking-panel content-card">
       <p class="eyebrow">Your project. A clear next step.</p>
@@ -187,8 +179,7 @@
 </section>
 </main>
 <footer class="footer shell"><div class="footer-top"><a class="brand" href="#top" aria-label="Colo-Migo home"><img src="assets/mark.svg" width="32" height="32" alt=""><span><span class="brand-colo">Colo-</span><span class="brand-migo">Migo</span></span></a><p class="eyebrow">Colocation & connectivity advisors</p><a href="#schedule">Let’s connect</a></div><div class="footer-bottom"><span>© <span id="year">2026</span> Colo-Migo. All rights reserved.</span><button class="text-button" id="privacy-open" type="button" hidden>Privacy</button><span>Thoughtful guidance. Solid foundations.</span></div></footer>
-<dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialog-heading"><p class="eyebrow">Your next move</p><button class="dialog-close" type="button" aria-label="Close project brief">×</button></div><h2 id="brief-title">Let’s start with<br>the essentials.</h2><p class="dialog-description">This prepares an email in your own email app. Nothing is submitted or saved by this website.</p><form id="brief-form"><label>Company<input name="company" autocomplete="organization" maxlength="150" required></label><div class="form-row"><label>Project type<select name="project"><option>Colocation renewal</option><option>Colocation relocation</option><option>New colocation deployment</option><option>Connectivity</option><option>Colocation + connectivity</option><option>Deployment coordination</option><option>Still exploring</option></select></label><label>Preferred market<input name="market" placeholder="e.g. Denver or Dallas" maxlength="150"></label></div><div class="form-row"><label>Space / power needs<input name="capacity" placeholder="e.g. 2 cabinets, 6 kW each" maxlength="150"></label><label>Target timeline<input name="timeline" placeholder="e.g. Q1 next year" maxlength="150"></label></div><label>Anything else we should know?<textarea name="details" rows="3" maxlength="2000" placeholder="Renewal expiry / notice date, relocation origin / destination, or questions"></textarea></label><button class="button button-solid" type="submit">Draft project email</button><p id="brief-status" role="status" class="form-status"></p></form></dialog>
+<dialog id="brief-dialog" aria-labelledby="brief-title"><div class="dialog-heading"><p class="eyebrow">Your next move</p><button class="dialog-close" type="button" aria-label="Close project brief">×</button></div><h2 id="brief-title">Let’s start with<br>the essentials.</h2><p class="dialog-description">This prepares an email in your own email app. Nothing is submitted or saved by this website.</p><form id="brief-form"><label>Company<input name="company" autocomplete="organization" maxlength="150" required></label><div class="form-row"><label>Project type<select name="project"><option>Colocation renewal</option><option>Colocation relocation</option><option>New colocation deployment</option><option>Connectivity</option><option>Colocation + connectivity</option><option>Deployment coordination</option><option>Still exploring</option></select></label><label>Preferred market<input name="market" placeholder="City, state or region" maxlength="150"></label></div><div class="form-row"><label>Space / power needs<input name="capacity" placeholder="e.g. 2 cabinets, 6 kW each" maxlength="150"></label><label>Target timeline<input name="timeline" placeholder="e.g. Q1 next year" maxlength="150"></label></div><label>Anything else we should know?<textarea name="details" rows="3" maxlength="2000" placeholder="Renewal expiry / notice date, relocation origin / destination, or questions"></textarea></label><button class="button button-solid" type="submit">Draft project email</button><p id="brief-status" role="status" class="form-status"></p></form></dialog>
 <dialog id="privacy-dialog" aria-labelledby="privacy-title"><div class="dialog-heading"><p class="eyebrow">A clear approach</p><button class="dialog-close" type="button" aria-label="Close privacy notice">×</button></div><h2 id="privacy-title">Your privacy.</h2><div class="privacy-copy"><p>Colo-Migo does not use analytics or advertising cookies on this page and does not store project-brief entries. The brief tool prepares an email through your own email application; you choose whether to send it.</p><p>If you email Colo-Migo, we use the information you provide to respond to your inquiry and discuss your project. Please avoid sending passwords, confidential provider documents, or sensitive infrastructure details in an initial inquiry.</p><p>Google Fonts and an Unsplash-hosted image are loaded from external providers, which receive normal connection information. Your email provider and the website hosting provider may also process technical connection information under their respective policies.</p><p>If you choose online booking, Calendly processes the information you enter and may use cookies under its own privacy policy. The booking page opens in a new tab only when you select Choose a time. You can also arrange a call by email.</p><p>Questions or requests about information you have shared: <a href="mailto:leroy@colomigo.com">leroy@colomigo.com</a>.</p><small>Last updated October 30, 2026.</small></div></dialog>
 </body>
 </html>
-

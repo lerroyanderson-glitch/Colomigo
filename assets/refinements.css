@@ -17,6 +17,9 @@
 .service-link { display: inline-block; margin-top: 22px; font-size: 15px; text-decoration: underline; text-underline-offset: 5px; line-height: 1.6; }
 .menu-toggle, .mobile-nav { display: none; }
 .nav-row { min-height: 94px; }
+.brand-lockup { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; padding-block: 18px; flex-shrink: 0; }
+.brand-tagline { font-family: var(--sans); font-size: 9px; line-height: 1.5; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.utility .shell { justify-content: flex-end; }
 
 .hero { min-height: 710px; }
 .hero-copy { max-width: min(46vw, 620px); padding-top: 66px; }
@@ -80,6 +83,19 @@
 .network-note a { text-decoration: underline; text-underline-offset: 3px; }
 .founder strong { font-size: 15px; }
 .founder div > span { font-size: 14px; }
+.about-summary { min-width: 0; }
+.provider-network { margin-top: 34px; max-width: 100%; }
+.provider-ticker-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.provider-ticker-heading .eyebrow { font-size: 10px; }
+.ticker-control { border: 1px solid var(--line); background: transparent; padding: 5px 10px; font-size: 11px; }
+.provider-ticker { overflow: hidden; margin-top: 18px; border-block: 1px solid var(--line); }
+.provider-track { display: flex; width: max-content; animation: provider-scroll 85s linear infinite; }
+.provider-group { display: flex; align-items: center; gap: 36px; list-style: none; margin: 0; padding: 24px 36px 24px 0; }
+.provider-group li { font-family: var(--sans); font-size: 19px; font-weight: 600; white-space: nowrap; color: var(--ink); }
+.provider-note { font-size: 12px; line-height: 1.6; margin-top: 12px; color: var(--muted); }
+.provider-ticker:hover .provider-track, .provider-network:focus-within .provider-track, .provider-network.is-paused .provider-track { animation-play-state: paused; }
+@keyframes provider-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .provider-track { animation: none; width: 100%; } .provider-group { flex-wrap: wrap; gap: 16px 24px; } .provider-group[aria-hidden] { display: none; } }
 
 .scheduling { display: block; }
 .about-copy, .scheduling-content, .contact-grid {
@@ -154,6 +170,8 @@
 @media (max-width: 760px) {
   :root { --page-gutter: 20px; }
   .nav-row { min-height: 82px; }
+  .brand-lockup { gap: 7px; padding-block: 15px; }
+  .brand-tagline { font-size: 7px; letter-spacing: .08em; }
   .menu-toggle:not([hidden]), .mobile-nav:not([hidden]) { display: block; }
   .hero { min-height: 0; }
   .hero-copy { max-width: 100%; padding: 37px 0 34px; }
@@ -181,4 +199,3 @@
   .brand { gap: 8px; }
   .brand span { font-size: 30px; }
 }
-
