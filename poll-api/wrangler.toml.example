@@ -1,0 +1,17 @@
+name = "colomigo-polls"
+main = "worker.mjs"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+# Include the exact origins hosting the static Colo-Migo site.
+ALLOWED_ORIGINS = "https://colomigo.com,https://www.colomigo.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "colomigo-polls"
+database_id = "REPLACE_WITH_YOUR_REAL_DATABASE_ID"
+migrations_dir = "migrations"
+
+# POLL_PEPPER must be set as a secret, not in this file:
+# npx wrangler secret put POLL_PEPPER
