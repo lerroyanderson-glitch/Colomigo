@@ -20,3 +20,15 @@
 .poll-stat-note{font-size:11px!important;color:var(--muted);line-height:1.65;margin-top:17px}
 .poll-submit:disabled{opacity:.55;cursor:wait}
 @media(prefers-reduced-motion:reduce){.vote-bar>span{transition:none}}
+
+/* Clear red attribution links for editorial reporting and sourced news. */
+.brief-editorial .editor-card a,
+.brief-news .story-card a {
+  color: var(--brand-red);
+  font-weight: 700;
+  text-decoration-color: currentColor;
+}
+.brief-editorial .editor-card a:hover,
+.brief-news .story-card a:hover {
+  color: #8c2421;
+}
