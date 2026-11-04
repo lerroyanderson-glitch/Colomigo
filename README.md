@@ -20,6 +20,14 @@ node --check assets/site.js
 
 ## Publishing
 This repository contains source code; a commit or pull request is not proof of deployment.
+
+## About and editorial pages
+
+- `/about/` introduces LeRoy Anderson, his career, an anonymized CoreSite example, the Colo-Migo mission, family and interests, and volunteering. Career material is owner supplied; the profile photograph and selected recommendation excerpts come from his LinkedIn profile. The featured Google Project Management Professional Certificate links to its verified Credly record. Individual course certificates are labeled separately.
+- The homepage remains focused on the advisory services. The navigation opens a dedicated About page, and the former “Why Colo-Migo?” hero button has been removed.
+- Insights leads with LeRoy's commentary, followed by three supporting stories. `assets/insights-sources.mjs` excludes their source URLs from the compact additional headlines, including tracking and trailing-slash variants.
+- The FIELD NOTE poll answers the issue's capacity question. The separate buyer poll asks about planning priorities and provides a practical next step. Both show answer counts alongside percentages after a confirmed ballot.
+- “Email me the next brief” opens an email request to LeRoy. Requests and distribution are handled manually; no automated mailing service or automatic subscription is implied.
 Publish the static root folder through an authorized hosting provider.
 Do not change the domain's MX, SPF, DKIM, or DMARC records when connecting the website: these support Private Email.
 The production domain is colomigo.com. Do not enable a custom-domain redirect before hosting is configured.

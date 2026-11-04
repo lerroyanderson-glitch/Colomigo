@@ -50,5 +50,22 @@ for phrase in ('name="viewport"', 'id="brief-form"', 'leroy@colomigo.com'):
     if phrase not in html:
         errors.append("Missing required content: " + phrase)
 ET.parse(ROOT / "assets/mark.svg")
+for route in ("about", "insights", "colocation-renewals", "colocation-relocations"):
+    subpage = Page()
+    content = (ROOT / route / "index.html").read_text(encoding="utf8")
+    subpage.feed(content)
+    errors.extend(f"{route}: {error}" for error in subpage.errors)
+    if subpage.h1 != 1:
+        errors.append(f"{route}: expected exactly one h1")
+    if 'href="/about/"' not in content:
+        errors.append(f"{route}: missing dedicated About navigation")
+    for ref in subpage.refs:
+        parsed = urlsplit(ref)
+        if ref.startswith("#") and ref[1:] not in subpage.ids:
+            errors.append(f"{route}: missing anchor {ref}")
+        elif not parsed.scheme and not ref.startswith("//") and parsed.path:
+            target = ROOT / parsed.path.lstrip('/')
+            if not target.is_file() and not (target / 'index.html').is_file():
+                errors.append(f"{route}: missing local reference {ref}")
 assert not errors, "\n".join(errors)
 print("PASS: page structure, unique IDs, anchors, local assets, image labels, contact and SVG.")

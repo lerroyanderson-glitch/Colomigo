@@ -1,4 +1,5 @@
 'use strict';
+import { additionalSources } from './insights-sources.mjs';
 const topicButtons = [...document.querySelectorAll('.topic-button')];
 const searchInput = document.getElementById('story-search');
 let activeTopic = 'all';
@@ -43,19 +44,12 @@ async function loadWire(){
     if(!response.ok)throw Error('News feed not available');
     const feed=await response.json();
     if(!Array.isArray(feed.stories)||!/^\d{4}-\d{2}-\d{2}$/.test(feed.updated_at))throw Error('Invalid feed');
-    const valid=feed.stories.filter(story=>{
-      try{
-        const url=new URL(story.url);
-        return url.protocol==='https:'&&['power','market','ai','network'].includes(story.category)
-          &&typeof story.title==='string'&&story.title.length<210
-          &&typeof story.source==='string'&&story.source.length<90
-          &&/^\d{4}-\d{2}-\d{2}$/.test(story.published);
-      }catch{return false;}
-    }).slice(0,6);
-    if(!valid.length)throw Error('No sourced headlines');
+    const represented = [...document.querySelectorAll('[data-editorial-source]')].map(link => link.href);
+    const valid=additionalSources(feed.stories, represented);
     document.getElementById('wire-grid').replaceChildren(...valid.map(wireCard));
+    document.getElementById('additional-sources').hidden = valid.length === 0;
     const old=Math.floor((Date.now()-Date.parse(feed.updated_at+'T00:00:00Z'))/86400000)>21;
-    status.textContent='Last sourced '+displayDate(feed.updated_at)+(old?'. Next editorial refresh is due.':'. Headlines checked on a 21-day cycle.');
+    status.textContent='Sources reviewed '+displayDate(feed.updated_at)+(old?'. Next editorial refresh is due.':'. Publication dates appear with each story.');
     filterStories();
   }catch{
     status.textContent='Live feed unavailable; showing the last saved source selection.';
@@ -151,7 +145,7 @@ function displayVoteResults(payload) {
     if (option.id === payload.votedChoice) row.classList.add('is-my-vote');
     const heading = document.createElement('div'); heading.className='vote-result-heading';
     const title = document.createElement('span'); title.textContent = option.label;
-    const amount = document.createElement('strong'); amount.textContent = option.percent + '%';
+    const amount = document.createElement('strong'); amount.textContent = option.percent + '% · ' + option.count + (option.count === 1 ? ' vote' : ' votes');
     heading.append(title,amount);
     const track=document.createElement('div'); track.className='vote-bar';
     track.setAttribute('role','progressbar');
@@ -240,7 +234,7 @@ function showFieldResults(payload) {
     const row = document.createElement('p');
     row.className = 'field-poll-result-row';
     const label = document.createElement('span'); label.textContent = option.label;
-    const value = document.createElement('strong'); value.textContent = option.percent + '%';
+    const value = document.createElement('strong'); value.textContent = option.percent + '% · ' + option.count + (option.count === 1 ? ' vote' : ' votes');
     row.append(label, value);
     breakdown.append(row);
   });

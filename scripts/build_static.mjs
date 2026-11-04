@@ -2,7 +2,7 @@
 import { cp, rm, mkdir } from 'node:fs/promises';
 
 const files = [
-  'index.html', 'assets', 'insights',
+  'index.html', 'assets', 'insights', 'about',
   'colocation-renewals', 'colocation-relocations',
   '_redirects', 'robots.txt', 'sitemap.xml'
 ];
