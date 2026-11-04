@@ -62,58 +62,155 @@ async function loadWire(){
   }
 }
 loadWire();
-const anchor=Date.UTC(2026,10,3);
-const cycle=Math.max(0,Math.floor((Date.now()-anchor)/(21*86400000)));
-const start=new Date(anchor+cycle*21*86400000);
-const end=new Date(anchor+(cycle+1)*21*86400000-86400000);
-const formatter=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
-const dateRange=formatter.format(start).toUpperCase()+'–'+formatter.format(end).toUpperCase();
-document.getElementById('issue-dates').textContent=dateRange;
-document.getElementById('pulse-dates').textContent='CURRENT PULSE / '+dateRange;
-const polls=[
-  {id:'constraints',question:'What is your biggest constraint in a colocation decision?',answers:[
-    ['power','Available power','Verify power, not promises.','Ask for energized capacity, available kW, redundancy, and supported delivery dates.'],
-    ['contract','Contract flexibility','Know the entire term.','Compare renewal notice dates, escalators, exit provisions and one-time versus recurring charges.'],
-    ['network','Connectivity options','Map the network ecosystem.','Validate required carriers, diverse paths, cross-connect availability and monthly charges.'],
-    ['timing','Deployment timing','Build a milestone plan.','Separate power provisioning, facility readiness, carrier turn-up, testing and approvals.']]},
-  {id:'workloads',question:'What workload is shaping your next capacity decision?',answers:[
-    ['ai','AI / GPU workloads','Start with density.','Validate power per rack, cooling approach and facility readiness before comparing prices.'],
-    ['enterprise','Core enterprise applications','Design for resilience.','Confirm redundancy, support coverage and recovery requirements.'],
-    ['recovery','Disaster recovery','Test the recovery path.','Review geographic separation, network diversity and recovery time requirements.'],
-    ['edge','Edge / latency-sensitive workloads','Measure the network path.','Compare carrier availability, interconnection costs and proximity to users.']]},
-  {id:'horizon',question:'When will you next reassess your colocation?',answers:[
-    ['soon','Within 6 months','Check notice dates now.','Find renewal deadlines and request comparable options before committing.'],
-    ['medium','In 6 to 12 months','Use your planning runway.','Gather utilization, growth and cost baselines for a structured review.'],
-    ['later','More than 12 months away','Build a benchmark.','Track capacity, service and spending trends ahead of renewal.'],
-    ['unsure','Not sure yet','Find the contract.','Confirm the agreement end date, auto-renewal clause and decision owner.']]}
-];
-const poll=polls[cycle%polls.length],storageKey='colomigo-pulse-'+cycle+'-'+poll.id;
-const form=document.getElementById('pulse-form'),choices=document.getElementById('poll-answers'),result=document.getElementById('poll-result'),status=document.getElementById('poll-status');
-document.getElementById('poll-question').textContent=poll.question;
-choices.replaceChildren();
-poll.answers.forEach(answer=>{
-  const label=document.createElement('label');label.className='poll-choice';
-  const radio=document.createElement('input');radio.type='radio';radio.name='choice';radio.value=answer[0];
-  label.append(radio,document.createTextNode(answer[1]));choices.append(label);
-});
-function showResult(id){
-  const answer=poll.answers.find(item=>item[0]===id);
-  if(!answer)return;
-  form.hidden=true;result.hidden=false;
-  document.getElementById('result-title').textContent=answer[2];
-  document.getElementById('result-body').textContent=answer[3];
-  status.textContent='Private browser-local selection only. No public votes are counted.';
+// Live poll: results are obtained exclusively from the deployed D1 API.
+const pollStatus = document.getElementById('poll-status');
+const pollForm = document.getElementById('pulse-form');
+const pollChoices = document.getElementById('poll-answers');
+const pollResult = document.getElementById('poll-result');
+const voteButton = pollForm.querySelector('button[type="submit"]');
+const apiUrl = String(window.COLOMIGO_POLL_API_URL || '').trim().replace(/\\/$/, '');
+let livePoll = null;
+let browserVoter = null;
+
+function pollMessage(message) {
+  pollStatus.textContent = message;
 }
-try{const saved=localStorage.getItem(storageKey);if(saved)showResult(saved);}catch{status.textContent='Browser storage unavailable; your selection is not saved.';}
-form.addEventListener('submit',event=>{
+function disablePoll(message) {
+  pollForm.hidden = true;
+  pollResult.hidden = true;
+  pollMessage(message);
+}
+function getBrowserVoter() {
+  const key = 'colomigo-anonymous-voter-v1';
+  const stored = localStorage.getItem(key);
+  if (stored && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(stored)) return stored;
+  if (!crypto.randomUUID) throw new Error('Secure browser ID is unavailable');
+  const id = crypto.randomUUID();
+  localStorage.setItem(key, id);
+  if (localStorage.getItem(key) !== id) throw new Error('Browser ID was not saved');
+  return id;
+}
+async function pollRequest(path, init={}) {
+  const response = await fetch(apiUrl + path, {
+    ...init,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Colomigo-Voter': browserVoter,
+      ...(init.headers || {})
+    },
+    cache: 'no-store'
+  });
+  const payload = await response.json();
+  if (!response.ok) throw new Error(typeof payload.error === 'string' ? payload.error : 'Poll service unavailable');
+  return payload;
+}
+const dateLabel = iso => new Intl.DateTimeFormat('en-US', {
+  month:'short', day:'numeric', timeZone:'UTC'
+}).format(new Date(iso));
+function renderPoll(poll) {
+  livePoll = poll;
+  document.getElementById('poll-question').textContent = poll.question;
+  const endExclusive = new Date(poll.endsAt);
+  endExclusive.setUTCDate(endExclusive.getUTCDate() - 1);
+  const range = dateLabel(poll.startsAt).toUpperCase() + '–' + dateLabel(endExclusive.toISOString()).toUpperCase();
+  document.getElementById('pulse-dates').textContent = 'CURRENT PULSE / ' + range;
+  document.getElementById('issue-dates').textContent = range;
+  pollChoices.replaceChildren();
+  poll.options.forEach(option => {
+    const label = document.createElement('label');
+    label.className = 'poll-choice';
+    const input = document.createElement('input');
+    input.type = 'radio'; input.name = 'choice'; input.value = option.id;
+    label.append(input, document.createTextNode(option.label));
+    pollChoices.append(label);
+  });
+  pollForm.hidden = false;
+}
+function displayVoteResults(payload) {
+  if (!payload.results || !Array.isArray(payload.results.options) ||
+      !Number.isInteger(payload.results.totalVotes)) {
+    throw new Error('Voting results not available');
+  }
+  pollForm.hidden = true;
+  pollResult.hidden = false;
+  const selected = payload.poll.options.find(option => option.id === payload.votedChoice);
+  if (!selected) throw new Error('Vote response missing selected answer');
+  document.getElementById('result-title').textContent = selected.tipTitle;
+  document.getElementById('result-body').textContent = selected.tip;
+  const total = payload.results.totalVotes;
+  const totalLabel = document.getElementById('vote-total');
+  totalLabel.textContent = total.toLocaleString() + (total === 1 ? ' vote' : ' votes') + ' cast';
+  const container = document.getElementById('poll-percentages');
+  container.replaceChildren();
+  payload.results.options.forEach(option => {
+    const row = document.createElement('div'); row.className='vote-result-row';
+    if (option.id === payload.votedChoice) row.classList.add('is-my-vote');
+    const heading = document.createElement('div'); heading.className='vote-result-heading';
+    const title = document.createElement('span'); title.textContent = option.label;
+    const amount = document.createElement('strong'); amount.textContent = option.percent + '%';
+    heading.append(title,amount);
+    const track=document.createElement('div'); track.className='vote-bar';
+    track.setAttribute('role','progressbar');
+    track.setAttribute('aria-label', option.label);
+    track.setAttribute('aria-valuemin','0');
+    track.setAttribute('aria-valuemax','100');
+    track.setAttribute('aria-valuenow', String(option.percent));
+    const fill=document.createElement('span'); fill.style.width=option.percent + '%';
+    track.append(fill);
+    row.append(heading,track);
+    container.append(row);
+  });
+  pollMessage('Live community results after your vote. One ballot per browser per issue; you can change your selection.');
+}
+
+pollForm.addEventListener('submit', async event => {
   event.preventDefault();
-  const checked=form.querySelector('input[name="choice"]:checked');
-  if(!checked){status.textContent='Select an answer first.';return;}
-  try{localStorage.setItem(storageKey,checked.value);}catch{}
-  showResult(checked.value);
+  if (!livePoll || !browserVoter) return;
+  const checked = pollForm.querySelector('input[name="choice"]:checked');
+  if (!checked) {pollMessage('Choose an option before submitting.'); return;}
+  voteButton.disabled = true;
+  pollMessage('Saving your vote securely…');
+  try {
+    const response = await pollRequest('/v1/vote', {
+      method:'POST',
+      body:JSON.stringify({pollId:livePoll.id, choiceId:checked.value, voterId:browserVoter})
+    });
+    renderPoll(response.poll);
+    displayVoteResults(response);
+  } catch(error) {
+    pollMessage(error.message + '. Your selection was not confirmed; try again.');
+  } finally {
+    voteButton.disabled = false;
+  }
 });
-document.getElementById('change-answer').addEventListener('click',()=>{
-  try{localStorage.removeItem(storageKey);}catch{}
-  result.hidden=true;form.hidden=false;form.reset();
-  status.textContent='No votes are transmitted or tallied.';
+
+document.getElementById('change-answer').addEventListener('click', () => {
+  pollResult.hidden = true;
+  pollForm.hidden = false;
+  pollForm.reset();
+  pollMessage('Changing your choice will update your existing vote, not add a second vote.');
 });
+
+async function initializeSharedPoll() {
+  if (!/^https:\/\/[^\s/]+/i.test(apiUrl)) {
+    disablePoll('Community voting is being configured. No votes are being accepted yet.');
+    return;
+  }
+  try {
+    browserVoter = getBrowserVoter();
+  } catch {
+    disablePoll('Community voting requires browser storage to remember your ballot. Enable site storage to participate.');
+    return;
+  }
+  pollMessage('Connecting to the community poll…');
+  try {
+    const payload = await pollRequest('/v1/poll');
+    if (!payload.poll || !Array.isArray(payload.poll.options)) throw new Error('Invalid poll configuration');
+    renderPoll(payload.poll);
+    if (payload.votedChoice) displayVoteResults(payload);
+    else pollMessage('Submit one vote to unlock live community percentages.');
+  } catch {
+    disablePoll('Community voting is temporarily unavailable. No vote has been recorded.');
+  }
+}
+initializeSharedPoll();
