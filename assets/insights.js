@@ -68,7 +68,7 @@ const pollForm = document.getElementById('pulse-form');
 const pollChoices = document.getElementById('poll-answers');
 const pollResult = document.getElementById('poll-result');
 const voteButton = pollForm.querySelector('button[type="submit"]');
-const apiUrl = String(window.COLOMIGO_POLL_API_URL || '').trim().replace(/\\/$/, '');
+const apiUrl = String(window.COLOMIGO_POLL_API_URL || '').trim().replace(new RegExp('/$'), '');
 let livePoll = null;
 let browserVoter = null;
 
