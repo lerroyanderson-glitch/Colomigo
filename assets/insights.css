@@ -3,3 +3,18 @@
 @media(max-width:1100px){.brief-hero-grid{grid-template-columns:1.1fr 1fr;gap:30px}.editorial-grid{grid-template-columns:1fr 1fr}.feature-card{grid-row:span 2}.editor-card:last-child{grid-column:2}.poll-layout{gap:40px}.desktop-nav{gap:14px;font-size:11px}}
 @media(max-width:760px){.brief-hero-grid,.brief-head,.poll-layout,.next-section{grid-template-columns:1fr}.brief-hero-grid{padding-block:52px}.brief-hero h1{font-size:clamp(58px,11vw,84px)}.issue-line{margin:30px 0 25px}.signal-panel{min-height:370px}.ticker .shell{padding-block:14px;font-size:9px}.ticker span:nth-child(n+5){display:none}.brief-head h2{font-size:clamp(48px,10vw,70px)}.editorial-grid,.story-grid,.wire-grid{grid-template-columns:1fr}.feature-card{grid-row:auto}.editor-card:last-child{grid-column:auto}.editor-card{min-height:0}.news-controls{align-items:stretch}.search-control{width:100%}.search-control input{flex:1;width:100%}.wire-heading{display:block}.wire-heading>p{margin-top:10px}.story-card{min-height:255px}.poll-layout{gap:35px}.poll-section h2{font-size:62px}.next-links{margin-top:20px}}
 @media(max-width:390px){.brief-hero h1{font-size:55px}.poll-panel{padding:20px}.poll-panel legend{font-size:34px}}
+
+/* Genuine shared poll results — only shown after a confirmed D1 ballot. */
+.poll-community{margin-top:28px;padding-top:25px;border-top:1px solid var(--line)}
+.poll-community-header{display:flex;align-items:end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.poll-community-header h4{margin:0;font-family:var(--serif);font-size:clamp(29px,2vw,37px);line-height:1.14;font-weight:400}
+.poll-community-header span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.vote-result-row{margin:16px 0}.vote-result-heading{display:flex;justify-content:space-between;gap:18px;margin-bottom:8px;font-size:13px}
+.vote-result-heading strong{font-size:14px;font-variant-numeric:tabular-nums}
+.vote-result-row.is-my-vote .vote-result-heading span:after{content:" · Your choice";color:var(--brand-red);font-size:11px}
+.vote-bar{width:100%;height:11px;background:#d5d6cb;overflow:hidden}
+.vote-bar>span{display:block;height:100%;background:#697863;transition:width .35s ease}
+.vote-result-row.is-my-vote .vote-bar>span{background:var(--brand-red)}
+.poll-stat-note{font-size:11px!important;color:var(--muted);line-height:1.65;margin-top:17px}
+.poll-submit:disabled{opacity:.55;cursor:wait}
+@media(prefers-reduced-motion:reduce){.vote-bar>span{transition:none}}
