@@ -48,3 +48,61 @@
 .brief-news .story-card a:hover {
   color: #8c2421;
 }
+
+/* A single lead opinion, three supporting stories, then compact source rows. */
+.brief-hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:clamp(30px,5vw,90px);align-items:start;padding-block:clamp(50px,5vw,90px)}
+.signal-panel{min-height:0;padding:28px}
+.signal-panel h2{font-size:clamp(36px,2.5vw,52px)}
+.signal-header,.signal-kicker,.issue-line{font-size:12px}
+.signal-panel>p:not(.signal-kicker):not(.signal-footer){font-size:16px}
+.signal-footer{margin-top:20px;font-size:11px}
+.capacity-steps{list-style:none;display:flex;gap:12px;padding:0 0 18px;margin:22px 0;border-bottom:1px solid #ffffff44}
+.capacity-steps li{flex:1;font-size:12px;line-height:1.5;color:#d6dbd0}
+.capacity-steps span{display:block;font-size:11px;color:#aeb8a6;margin-bottom:5px}
+.field-poll-choices label{flex-direction:row;margin:0;font-size:15px;min-height:46px}
+.field-poll-choices input{width:18px;height:18px;flex:none;padding:0}
+.field-poll button{font-size:14px}
+#field-poll-status{font-size:13px}
+.field-poll-result-row{font-size:14px}
+.lead-take{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,110px)}
+.lead-take h2{font-size:clamp(43px,4vw,76px);margin-top:20px;max-width:15ch}
+.take-byline{font-size:14px;color:var(--muted);margin-top:24px;line-height:1.7}
+.take-byline a{text-decoration:underline;text-underline-offset:4px}
+.lead-take-copy{font-size:clamp(17px,1vw,20px);color:var(--muted);line-height:1.8}
+.lead-take-copy p+p{margin-top:20px}
+.take-checks{padding-left:22px;margin:22px 0}
+.take-checks li{padding:5px 0}
+.take-checks strong{color:var(--ink)}
+.take-context{font-size:14px;border-top:1px solid var(--line);padding-top:20px;margin-top:25px}
+.take-context a{color:var(--brand-red);text-decoration:underline;text-underline-offset:4px}
+.take-action{display:inline-block;margin-top:24px;font-size:15px;color:var(--brand-red);text-decoration:underline;text-underline-offset:5px;font-weight:600}
+.brief-news .brief-head{margin-bottom:25px}
+.story-card{min-height:0}
+.story-card p{font-size:16px}
+.story-meta{font-size:12px}
+.brief-news .story-card .story-action{border:0;margin:0;padding:0 0 20px;color:var(--ink);font-weight:600;font-size:14px}
+.story-card a{font-size:13px}
+.story-grid{margin-top:28px}
+.wire-grid{display:block;border-top:1px solid var(--line)}
+.wire-card{display:grid;grid-template-columns:180px minmax(0,1fr) 180px;gap:24px;align-items:center;min-height:0;padding:20px 0;background:none;border:0;border-bottom:1px solid var(--line)}
+.wire-card .story-meta{display:block;font-size:11px}
+.wire-card time{display:block;margin-top:4px}
+.wire-card h3{font-size:clamp(25px,1.6vw,33px);margin:0}
+.wire-card a{padding:0;border:0;margin:0;font-size:13px;justify-self:end}
+.wire-heading{margin-top:35px}
+.wire-heading>p{font-size:13px}
+.poll-choice{flex-direction:row;margin-bottom:9px;font-size:16px;min-height:52px}
+.poll-choice input{width:18px;height:18px}
+.poll-status,.poll-disclosure{font-size:14px;line-height:1.7}
+.poll-panel{padding:clamp(25px,3vw,40px)}
+.poll-panel legend{font-size:clamp(31px,2.5vw,43px)}
+.poll-panel-top{font-size:12px}
+.poll-privacy{font-size:13px;line-height:1.7;margin-top:18px;max-width:60ch;color:#e0e5d9}
+.poll-privacy summary{cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+.poll-privacy p{margin-top:12px}
+.brief-subscribe{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center;background:#dcd8ce;padding:clamp(28px,4vw,60px)}
+.brief-subscribe h2{font-size:clamp(38px,3vw,58px);margin:15px 0}
+.brief-subscribe p:not(.eyebrow){font-size:17px;color:var(--muted);max-width:60ch}
+.brief-subscribe small{display:block;font-size:13px;color:var(--muted);margin-top:14px;max-width:45ch}
+@media(max-width:900px){.brief-hero-grid,.lead-take{grid-template-columns:1fr}.brief-hero-copy{max-width:850px}.signal-panel{max-width:750px}.lead-take h2{max-width:24ch}.wire-card{grid-template-columns:140px 1fr}.wire-card a{grid-column:2;justify-self:start}.brief-subscribe{grid-template-columns:1fr;gap:25px}}
+@media(max-width:600px){.signal-panel{padding:23px}.capacity-steps{gap:8px}.capacity-steps li{font-size:11px}.story-grid{gap:16px}.wire-card{grid-template-columns:1fr;gap:12px}.wire-card a{grid-column:1}.wire-card .story-meta{display:flex;gap:15px}.wire-card time{margin:0}.vote-result-heading{flex-wrap:wrap}.field-poll-result-row{gap:10px}.poll-section h2{font-size:52px}.brief-hero h1{font-size:clamp(51px,10vw,68px)}}
