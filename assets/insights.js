@@ -62,7 +62,7 @@ async function loadWire(){
   }
 }
 loadWire();
-// Live poll: results are obtained exclusively from the deployed D1 API.
+// Live poll: results are obtained exclusively from the deployed database API.
 const pollStatus = document.getElementById('poll-status');
 const pollForm = document.getElementById('pulse-form');
 const pollChoices = document.getElementById('poll-answers');
@@ -91,7 +91,7 @@ function getBrowserVoter() {
   return id;
 }
 async function pollRequest(path, init={}) {
-  const url = apiUrl.startsWith('/') ? apiUrl : apiUrl + path;
+  const url = apiUrl.startsWith('/') ? apiUrl + (path.startsWith('?') ? path : '') : apiUrl + path;
   const response = await fetch(url, {
     ...init,
     headers: {
@@ -110,6 +110,9 @@ const dateLabel = iso => new Intl.DateTimeFormat('en-US', {
 }).format(new Date(iso));
 function renderPoll(poll) {
   livePoll = poll;
+  const issueNumber = String(poll.cycle + 1).padStart(3, '0');
+  document.getElementById('issue-number').textContent = 'ISSUE ' + issueNumber;
+  document.getElementById('field-issue-number').textContent = issueNumber;
   document.getElementById('poll-question').textContent = poll.question;
   const endExclusive = new Date(poll.endsAt);
   endExclusive.setUTCDate(endExclusive.getUTCDate() - 1);
@@ -215,3 +218,76 @@ async function initializeSharedPoll() {
   }
 }
 initializeSharedPoll();
+
+// The compact FIELD NOTE poll has its own issue-specific ballot in the same database.
+const fieldForm = document.getElementById('field-poll-form');
+const fieldResult = document.getElementById('field-poll-results');
+const fieldStatus = document.getElementById('field-poll-status');
+const fieldSubmit = fieldForm.querySelector('button[type="submit"]');
+let fieldPoll = null;
+
+function showFieldResults(payload) {
+  if (!payload.results || !Number.isInteger(payload.results.totalVotes) ||
+      !Array.isArray(payload.results.options)) throw new Error('Results unavailable');
+  fieldForm.hidden = true;
+  fieldResult.hidden = false;
+  document.getElementById('field-poll-results-title').textContent = payload.poll.question;
+  document.getElementById('field-poll-total').textContent =
+    payload.results.totalVotes.toLocaleString() + (payload.results.totalVotes === 1 ? ' vote' : ' votes') + ' this issue';
+  const breakdown = document.getElementById('field-poll-breakdown');
+  breakdown.replaceChildren();
+  payload.results.options.forEach(option => {
+    const row = document.createElement('p');
+    row.className = 'field-poll-result-row';
+    const label = document.createElement('span'); label.textContent = option.label;
+    const value = document.createElement('strong'); value.textContent = option.percent + '%';
+    row.append(label, value);
+    breakdown.append(row);
+  });
+  fieldStatus.textContent = 'Results from recorded ballots. Your answer is saved for this issue.';
+}
+
+fieldForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const choice = fieldForm.querySelector('input[name="field-choice"]:checked');
+  if (!choice) {fieldStatus.textContent = 'Choose yes or no to vote.'; return;}
+  fieldSubmit.disabled = true;
+  fieldStatus.textContent = 'Saving your answer…';
+  try {
+    const payload = await pollRequest('/v1/vote', {
+      method:'POST', body:JSON.stringify({pollId:fieldPoll.id,choiceId:choice.value,voterId:browserVoter})
+    });
+    showFieldResults(payload);
+  } catch {
+    fieldStatus.textContent = 'Your answer was not confirmed. Please try again.';
+  } finally {fieldSubmit.disabled = false;}
+});
+
+document.getElementById('field-poll-change').addEventListener('click', () => {
+  fieldResult.hidden = true;
+  fieldForm.hidden = false;
+  fieldStatus.textContent = 'Changing your answer updates your existing ballot.';
+});
+
+async function initializeFieldPoll() {
+  // The optional Worker backend does not yet implement this second poll.
+  if (!apiUrl.startsWith('/.netlify/functions/')) {
+    fieldStatus.textContent = 'This issue’s question is temporarily unavailable.';
+    return;
+  }
+  try {
+    browserVoter = browserVoter || getBrowserVoter();
+    const payload = await pollRequest('?scope=field');
+    if (!payload.poll || !Array.isArray(payload.poll.options) || payload.poll.options.length !== 2)
+      throw new Error('Invalid question');
+    fieldPoll = payload.poll;
+    document.getElementById('field-poll-title').textContent = fieldPoll.question;
+    if (payload.votedChoice) showFieldResults(payload);
+    else {fieldForm.hidden = false;fieldStatus.textContent = 'One anonymous ballot per browser for this issue.';}
+  } catch {
+    fieldForm.hidden = true;
+    fieldResult.hidden = true;
+    fieldStatus.textContent = 'This issue’s question is temporarily unavailable. No vote has been recorded.';
+  }
+}
+initializeFieldPoll();

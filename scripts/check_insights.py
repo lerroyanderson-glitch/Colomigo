@@ -9,12 +9,13 @@ page=(root/"insights/index.html").read_text()
 script=(root/"assets/insights.js").read_text()
 feed=json.loads((root/"insights/feed.json").read_text())
 assert page.count("<h1")==1
-for token in ('id="pulse-form"','id="wire-grid"','id="story-search"','id="poll-result"'):
+for token in ('id="pulse-form"','id="field-poll-form"','id="field-poll-results"','id="wire-grid"','id="story-search"','id="poll-result"'):
     assert token in page,token
 for path in ("index.html","colocation-renewals/index.html","colocation-relocations/index.html"):
     assert 'href="/insights/"' in (root/path).read_text(), path
 assert "https://colomigo.com/insights/" in (root/"sitemap.xml").read_text()
 assert "window.COLOMIGO_POLL_API_URL" in script
+assert "?scope=field" in script
 assert 'id="poll-percentages"' in page
 assert '/assets/poll-config.js' in page
 assert (root/"poll-api/worker.mjs").is_file()
