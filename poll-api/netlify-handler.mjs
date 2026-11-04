@@ -1,6 +1,6 @@
 // Platform-agnostic poll handler used by Netlify Functions.
 // All public vote totals are calculated from committed SQL ballots.
-import { currentPoll, calculateResults } from "./worker.mjs";
+import { currentPoll, currentFieldPoll, calculateResults } from "./worker.mjs";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
@@ -26,7 +26,10 @@ export function makePollHandler(getDatabase) {
     const origin = request.headers.get("Origin");
     if (origin && origin !== url.origin) return reply({error:"Wrong origin"},403);
     if (!["GET","POST"].includes(request.method)) return reply({error:"Method not allowed"},405);
-    const poll = currentPoll();
+    const mainPoll = currentPoll();
+    const fieldPoll = currentFieldPoll();
+    const poll = request.method === "GET" && url.searchParams.get("scope") === "field"
+      ? fieldPoll : mainPoll;
     let db;
     try { db = getDatabase(); }
     catch { return reply({error:"Database not configured"},503); }
@@ -62,25 +65,26 @@ export function makePollHandler(getDatabase) {
       let body;
       try {body=JSON.parse(raw);} catch {return reply({error:"Invalid JSON"},400);}
       if(!body || typeof body!=="object" || Array.isArray(body)) return reply({error:"Invalid vote"},400);
-      if(body.pollId!==poll.id) return reply({error:"This poll has rotated. Refresh to see the new question."},409);
+      const votePoll = [mainPoll,fieldPoll].find(item => item.id === body.pollId);
+      if(!votePoll) return reply({error:"This poll has rotated. Refresh to see the new question."},409);
       if(typeof body.voterId!=="string" || !UUID.test(body.voterId) ||
-         !poll.options.some(option => option.id===body.choiceId)) {
+         !votePoll.options.some(option => option.id===body.choiceId)) {
         return reply({error:"Invalid ballot"},400);
       }
 
-      const hash=await voterHash(poll.id,body.voterId);
+      const hash=await voterHash(votePoll.id,body.voterId);
       // Atomic UPSERT: one browser ID per cycle, even under simultaneous requests.
       await db.sql`
         INSERT INTO poll_votes (poll_id,voter_hash,choice_id)
-        VALUES (${poll.id}, ${hash}, ${body.choiceId})
+        VALUES (${votePoll.id}, ${hash}, ${body.choiceId})
         ON CONFLICT (poll_id,voter_hash)
         DO UPDATE SET choice_id = EXCLUDED.choice_id, updated_at=NOW()
       `;
       const counts=await db.sql`
         SELECT choice_id, COUNT(*)::int AS votes FROM poll_votes
-        WHERE poll_id = ${poll.id} GROUP BY choice_id
+        WHERE poll_id = ${votePoll.id} GROUP BY choice_id
       `;
-      return reply({poll,votedChoice:body.choiceId,results:calculateResults(poll.options,counts)});
+      return reply({poll:votePoll,votedChoice:body.choiceId,results:calculateResults(votePoll.options,counts)});
     } catch (error) {
       console.error("poll query failed",error?.name||"unknown");
       return reply({error:"Voting is temporarily unavailable"},503);

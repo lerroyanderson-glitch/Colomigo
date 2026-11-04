@@ -21,6 +21,22 @@
 .poll-submit:disabled{opacity:.55;cursor:wait}
 @media(prefers-reduced-motion:reduce){.vote-bar>span{transition:none}}
 
+/* FIELD NOTE: quiet emphasis and a compact, issue-specific ballot. */
+.signal-panel h2 em{color:#eee9dc}
+.field-poll{border-top:1px solid #ffffff44;margin-top:23px;padding-top:18px}
+.field-poll-label{font-size:10px;letter-spacing:.16em;color:#c4cfbf;margin:0 0 10px}
+.field-poll fieldset{border:0;margin:0;padding:0}
+.field-poll legend,.field-poll-results>p:first-child{font-family:var(--serif);font-size:clamp(23px,1.5vw,30px);line-height:1.1;margin-bottom:12px}
+.field-poll-choices{display:flex;gap:8px}
+.field-poll-choices label{display:flex;align-items:center;gap:8px;flex:1;border:1px solid #d3d9c277;padding:10px 12px;cursor:pointer;font-size:12px}
+.field-poll-choices label:has(input:checked){border-color:#eee9dc;background:#ffffff18}
+.field-poll-choices input{accent-color:#d5c29f;margin:0}
+.field-poll button{border:0;background:none;color:#eee9dc;text-decoration:underline;text-underline-offset:4px;padding:9px 0;margin-top:4px;font-size:12px;cursor:pointer}
+.field-poll button:hover{color:#f67369}
+#field-poll-status{font-size:11px;line-height:1.5;color:#bbc5b6;margin:8px 0 0}
+.field-poll-result-row{display:flex;justify-content:space-between;border-top:1px solid #ffffff33;padding:8px 0;margin:0;font-size:12px}
+#field-poll-total{font-size:11px;color:#bbc5b6;margin:6px 0}
+
 /* Clear red attribution links for editorial reporting and sourced news. */
 .brief-editorial .editor-card a,
 .brief-news .story-card a {

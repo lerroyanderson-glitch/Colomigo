@@ -53,6 +53,27 @@ export function currentPoll(now = Date.now()) {
   };
 }
 
+// The field-note question follows the same issue clock but keeps its own ballot.
+const FIELD_QUESTIONS = [
+  "Before committing, can you verify when the capacity will be energized?",
+  "Can the proposed facility support your workload's actual power and cooling needs?",
+  "Do you have a contractually supported date for the capacity you need?"
+];
+export function currentFieldPoll(now = Date.now()) {
+  const issue = currentPoll(now);
+  return {
+    id: `field-${issue.cycle}`,
+    question: FIELD_QUESTIONS[issue.cycle % FIELD_QUESTIONS.length],
+    cycle: issue.cycle,
+    startsAt: issue.startsAt,
+    endsAt: issue.endsAt,
+    options: [
+      {id:"yes",label:"Yes"},
+      {id:"no",label:"No"}
+    ]
+  };
+}
+
 export function calculateResults(options, rows) {
   const counts = new Map(rows.map(row => [row.choice_id, Number(row.votes) || 0]));
   const totalVotes = options.reduce((sum, option) => sum + (counts.get(option.id) || 0), 0);
