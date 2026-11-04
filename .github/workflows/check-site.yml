@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Check HTML structure and local references
-        run: python3 scripts/check_site.py
+        run: python3 scripts/check_site.py && python3 scripts/check_insights.py
       - name: Check JavaScript syntax
-        run: node --check assets/site.js
+        run: node --check assets/site.js && node --check assets/insights.js && node --check poll-api/worker.mjs && node --test poll-api/test/*.test.mjs && python3 -m py_compile scripts/update_insights.py

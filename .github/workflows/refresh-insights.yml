@@ -1,0 +1,24 @@
+name: Refresh Insights sourced headlines
+on:
+  schedule:
+    - cron: '13 14 * * 2'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Update only when 21 days have passed
+        run: python3 scripts/update_insights.py
+      - name: Commit updated news if available
+        run: |
+          if git diff --quiet -- insights/feed.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add insights/feed.json
+          git commit -m "content: refresh source-attributed Colo-Migo news"
+          git push

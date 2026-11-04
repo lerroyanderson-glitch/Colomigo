@@ -38,3 +38,23 @@ No analytics or advertising cookies are added by the source.
 ## Review status
 Prepared from the approved warm-stone/olive industrial mockup. The original generated mockup is a design reference, not an exported image asset for this site.
 Automated checks run in GitHub Actions when enabled. Responsive browser verification and hosting configuration remain to be completed before launch.
+
+## The Colo-Migo Brief / Insights
+- New `/insights/` editorial landing page, search and filters for sourced news, and a rotating 21-day industry poll.
+- **Primary shared-voting implementation:** Netlify Functions + Netlify Database (Postgres). The website calls `/.netlify/functions/poll` on its own origin; no additional voting domain is needed.
+- Poll cycles use UTC November 3, 2026 as the start and rotate every 21 days: Nov 3, Nov 24, Dec 15, and so on. Each issue uses a unique poll ID, so all totals start at zero and past records remain separate.
+- Each browser gets a random anonymous ID (stored locally); the backend stores only a poll-scoped SHA-256 digest and the selected option. Votes are unique per browser ID and issue; changing an answer updates rather than inflating the count. Percentages are calculated from committed rows and shown only after a confirmed vote.
+- Votes are browser-scoped, **not identity-verified**. Users can vote again using another browser or clearing storage. Apply additional anti-abuse protections if polls become high-traffic. Netlify infrastructure may process IP addresses.
+- **Deployment:** Netlify must have Database enabled on a qualifying credit-based plan. Netlify's managed database can be provisioned on deploy and can consume usage credits. SQL migration `netlify/database/migrations/20261104000000_create_poll_votes.sql` is automatically applied before publishing. Verify database provisioning and function response on the deploy preview before merging. See https://docs.netlify.com/build/data-and-storage/netlify-database/ for eligibility and details.
+- The Cloudflare Worker implementation in `poll-api/` remains as an alternative, but Netlify's database/Function is the default.
+- Scheduled 21-day headline refresh is separate from poll rotation; editorial analysis requires manual review each issue.
+- GitHub changes and deploy previews do not prove that the poll has been made live on `colomigo.com`.
+
+## Validation
+```sh
+python3 scripts/check_site.py
+python3 scripts/check_insights.py
+node --check assets/insights.js
+node --test poll-api/test/*.test.mjs
+npm run build
+```
