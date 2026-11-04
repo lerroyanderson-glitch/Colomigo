@@ -1,0 +1,48 @@
+{
+  "updated_at": "2026-11-03",
+  "update_interval_days": 21,
+  "stories": [
+    {
+      "category": "power",
+      "published": "2026-11-03",
+      "source": "Data Center Dynamics",
+      "title": "Dominion Energy reports 54.9GW of data center demand in various stages of contracting",
+      "url": "https://www.datacenterdynamics.com/en/news/dominion-energy-reports-549gw-of-data-center-demand-in-various-stages-of-contracting/"
+    },
+    {
+      "category": "ai",
+      "published": "2026-11-02",
+      "source": "Data Center Knowledge",
+      "title": "Liquid Cooling Retrofits: Hard, but Sometimes Worth It",
+      "url": "https://www.datacenterknowledge.com/cooling/liquid-cooling-retrofits-hard-but-sometimes-worth-it"
+    },
+    {
+      "category": "power",
+      "published": "2026-11-02",
+      "source": "OpenAI",
+      "title": "Introducing the Grid Protectors Program",
+      "url": "https://openai.com/index/grid-protectors-program/"
+    },
+    {
+      "category": "market",
+      "published": "2026-11-02",
+      "source": "Data Center Dynamics",
+      "title": "Prometheus Hyperscale pulls out of proposed Casper, Wyoming data center project",
+      "url": "https://www.datacenterdynamics.com/en/news/prometheus-hyperscale-pulls-out-of-gigawatt-scale-data-center-project-in-casper-wyoming/"
+    },
+    {
+      "category": "market",
+      "published": "2026-10-29",
+      "source": "Digital Realty",
+      "title": "Digital Realty Reports Third Quarter 2026 Results",
+      "url": "https://investor.digitalrealty.com/news-releases/news-release-details/digital-realty-reports-third-quarter-2026-results"
+    },
+    {
+      "category": "ai",
+      "published": "2026-07-28",
+      "source": "Uptime Institute",
+      "title": "2026 Global Data Center Survey Reports Rising High-Density Rack Deployment",
+      "url": "https://uptimeinstitute.com/about-ui/press-releases/16th-annual-2026-global-data-center-survey-deployment-of-high-density-racks-rising-fast-operators-face-continued-recruiting-and-retention-pressures"
+    }
+  ]
+}
