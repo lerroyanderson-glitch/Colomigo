@@ -68,7 +68,7 @@ const pollForm = document.getElementById('pulse-form');
 const pollChoices = document.getElementById('poll-answers');
 const pollResult = document.getElementById('poll-result');
 const voteButton = pollForm.querySelector('button[type="submit"]');
-const apiUrl = String(window.COLOMIGO_POLL_API_URL || '').trim().replace(new RegExp('/$'), '');
+const apiUrl = String(window.COLOMIGO_POLL_API_URL || '/.netlify/functions/poll').trim().replace(new RegExp('/$'), '');
 let livePoll = null;
 let browserVoter = null;
 
@@ -91,7 +91,8 @@ function getBrowserVoter() {
   return id;
 }
 async function pollRequest(path, init={}) {
-  const response = await fetch(apiUrl + path, {
+  const url = apiUrl.startsWith('/') ? apiUrl : apiUrl + path;
+  const response = await fetch(url, {
     ...init,
     headers: {
       'Content-Type': 'application/json',
@@ -192,7 +193,7 @@ document.getElementById('change-answer').addEventListener('click', () => {
 });
 
 async function initializeSharedPoll() {
-  if (!/^https:\/\/[^\s/]+/i.test(apiUrl)) {
+  if (!(apiUrl.startsWith('/.netlify/functions/') || apiUrl.startsWith('https://'))) {
     disablePoll('Community voting is being configured. No votes are being accepted yet.');
     return;
   }
