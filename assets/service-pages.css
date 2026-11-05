@@ -19,7 +19,7 @@
 .service-context,.service-final{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(30px,5vw,80px);border-top:1px solid var(--line)}
 .service-context p,.service-final p,.service-card-grid p,.faq-list p,.scope-note,.section-deck{font-size:17px;color:var(--muted);line-height:1.8}
 .service-context p+p{margin-top:20px}
-.service-tint{background:#deded2}
+.service-tint{background:var(--stone)}
 .service-page h2{font-size:clamp(38px,3.5vw,60px);margin-top:20px}
 .service-page h3{font-size:clamp(29px,2.2vw,38px);margin-bottom:18px;line-height:1.12}
 .service-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:34px}
