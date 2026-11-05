@@ -1,5 +1,5 @@
 # Colo-Migo
-Colocation & Connectivity Advisors — a responsive, buildless marketing website for LeRoy Anderson.
+Colocation & Connectivity Advisors — a responsive, buildless marketing website for Colo-Migo.
 
 ## Contents
 - `index.html`: services, approach, founder background, contact, privacy notice, and project brief.
@@ -23,11 +23,13 @@ This repository contains source code; a commit or pull request is not proof of d
 
 ## About and editorial pages
 
-- `/about/` introduces LeRoy Anderson, his career, an anonymized data center operations example, the Colo-Migo mission, family and interests, and volunteering. Career material is owner supplied; the profile photograph and selected recommendation excerpts come from his LinkedIn profile. The featured Google Project Management Professional Certificate links to its verified Credly record. Individual course certificates are labeled separately.
+- `/about/` introduces the company mission and approach, followed by a third-person biography of founder LeRoy Anderson, his career, an anonymized data center operations example, family and interests, and volunteering. Career material is owner supplied; the profile photograph and selected recommendation excerpts come from his LinkedIn profile. The featured Google Project Management Professional Certificate links to its verified Credly record. Individual course certificates are labeled separately.
 - The homepage remains focused on the advisory services. The navigation opens a dedicated About page, and the former “Why Colo-Migo?” hero button has been removed.
 - Insights leads with company editorial analysis credited to Colo-Migo Staff, followed by three supporting stories. `assets/insights-sources.mjs` excludes their source URLs from the compact additional headlines, including tracking and trailing-slash variants.
 - The FIELD NOTE poll answers the issue's capacity question. The separate buyer poll asks about planning priorities and provides a practical next step. Both show answer counts alongside percentages after a confirmed ballot.
-- “Email me the next brief” opens an email request to LeRoy. Requests and distribution are handled manually; no automated mailing service or automatic subscription is implied.
+- “Request the next brief” opens an email request to the Colo-Migo team. Requests and distribution are handled manually; no automated mailing service or automatic subscription is implied.
+
+Company copy uses third-person references to “Colo-Migo” or “the Colo-Migo team.” LeRoy is described through his role and verified biography; service descriptions should not equate him with the company. Keep editorial analysis credited to “Colo-Migo Staff,” preserve attributed recommendation excerpts, and use direct action labels for visitors. Apply the same voice to JavaScript-generated text, email greetings, page descriptions, and future issues without inventing staffing levels or capabilities.
 Publish the static root folder through an authorized hosting provider.
 Do not change the domain's MX, SPF, DKIM, or DMARC records when connecting the website: these support Private Email.
 The production domain is colomigo.com. Do not enable a custom-domain redirect before hosting is configured.
