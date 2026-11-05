@@ -27,20 +27,13 @@
 .mission-section h2{margin-top:20px}
 .mission-statement{font-family:var(--serif);font-size:clamp(30px,2.5vw,48px);line-height:1.2;max-width:31ch}
 .mission-detail{font-size:17px;color:#e0e5d9;margin-top:24px;max-width:60ch;line-height:1.8}
-.credentials-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:end;margin-bottom:35px}
-.credentials-head h2{margin-top:20px}
-.credentials-head>p{font-size:17px;color:var(--muted);max-width:60ch}
-.credential-feature{display:grid;grid-template-columns:1fr auto;gap:25px;align-items:center;padding:30px;border:1px solid var(--line);background:var(--paper);margin-bottom:28px}
-.credential-feature h3{font-size:clamp(30px,2.5vw,45px);margin:12px 0}
-.credential-feature p:last-child{font-size:15px;color:var(--muted)}
-.credential-feature a,.credential-group a{color:var(--brand-red);text-decoration:underline;text-underline-offset:4px;font-size:14px}
-.credential-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}
-.credential-group{border-top:1px solid var(--line);padding-top:20px}
-.credential-group h3{font-size:28px;margin-bottom:15px}
-.credential-group ul{list-style:none;margin:0;padding:0}
-.credential-group li+li{margin-top:12px}
-.credential-group a{line-height:1.6;display:inline-block}
-.credential-group small{display:block;font-size:12px;color:var(--muted)}
+.credentials-summary{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(35px,7vw,120px);align-items:start}
+.credentials-summary h2{margin-top:20px;max-width:16ch}
+.credentials-summary-copy{max-width:65ch}
+.credentials-summary-copy p{font-size:clamp(17px,1vw,20px);line-height:1.8;color:var(--muted)}
+.credentials-summary-copy p+p{margin-top:20px}
+.credentials-summary-copy .button{margin-top:28px;font-size:15px;gap:20px;text-align:left;max-width:100%}
+.credentials-summary-copy small{display:block;max-width:48ch;margin-top:14px;font-size:13px;line-height:1.7;color:var(--muted)}
 .recommendation-section{background:#dcd8ce}
 .recommendation-section h2{margin:20px 0 15px}
 .recommendation-intro{font-size:16px;color:var(--muted);max-width:75ch}
@@ -54,5 +47,5 @@
 .about-close h2{max-width:19ch}
 .about-close p{font-size:17px;color:var(--muted);max-width:55ch;margin-top:20px}
 .about-close .button{flex-shrink:0;font-size:14px}
-@media(max-width:900px){.about-chapter,.mission-section .shell,.credentials-head{grid-template-columns:1fr}.credential-groups{grid-template-columns:1fr 1fr}.about-chapter h2{max-width:24ch}.recommendation-grid{gap:16px}.recommendation-grid figure{padding:20px}}
-@media(max-width:650px){.about-hero-grid{grid-template-columns:1fr}.about-hero h1{font-size:68px}.founder-portrait{justify-self:start;max-width:300px}.about-chapter,.mission-section .shell{gap:30px}.career-path,.credential-groups,.recommendation-grid,.credential-feature{grid-template-columns:1fr}.credential-feature{padding:24px}.about-close{display:block}.about-close .button{margin-top:25px}.credentials-head{gap:22px}}
+@media(max-width:900px){.about-chapter,.mission-section .shell,.credentials-summary{grid-template-columns:1fr}.about-chapter h2{max-width:24ch}.recommendation-grid{gap:16px}.recommendation-grid figure{padding:20px}}
+@media(max-width:650px){.about-hero-grid{grid-template-columns:1fr}.about-hero h1{font-size:68px}.founder-portrait{justify-self:start;max-width:300px}.about-chapter,.mission-section .shell{gap:30px}.career-path,.recommendation-grid{grid-template-columns:1fr}.about-close{display:block}.about-close .button{margin-top:25px}.credentials-summary{gap:22px}}

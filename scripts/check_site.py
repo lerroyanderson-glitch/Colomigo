@@ -50,7 +50,7 @@ for phrase in ('name="viewport"', 'id="brief-form"', 'leroy@colomigo.com'):
     if phrase not in html:
         errors.append("Missing required content: " + phrase)
 ET.parse(ROOT / "assets/mark.svg")
-for route in ("about", "insights", "colocation-renewals", "colocation-relocations"):
+for route in ("about", "about/experience", "insights", "colocation-renewals", "colocation-relocations"):
     subpage = Page()
     content = (ROOT / route / "index.html").read_text(encoding="utf8")
     subpage.feed(content)
