@@ -34,7 +34,7 @@ The production domain is colomigo.com. Do not enable a custom-domain redirect be
 
 ## Contact behavior
 All contact links address leroy@colomigo.com. The project brief opens a pre-filled message in the visitor's email app; it does not submit to a server, save data, or promise delivery.
-No provider affiliations, client testimonials, or performance guarantees are claimed.
+The homepage and About page describe Colo-Migo's customer-facing sourcing process without naming its distribution relationship. They do not imply that Colo-Migo operates a provider's facilities or owns the service contract, billing, or delivery. No individual provider affiliations, client testimonials, or performance guarantees are claimed.
 
 ## External assets and privacy
 Fonts load from Google Fonts. The illustrative data-center image loads from Unsplash:
