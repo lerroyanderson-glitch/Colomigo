@@ -156,8 +156,8 @@
   background: var(--olive);
 }
 
-/* Keep information cards light, with a deeper surface for the booking action. */
-.booking-panel.content-card, .service-final .content-card {
+/* Use the same deep olive for service-page cards and booking panels. */
+.booking-panel.content-card, .service-page .content-card {
   --ink: var(--paper);
   --muted: #e0e5dc;
   --line: rgba(240,237,229,.3);
@@ -165,19 +165,19 @@
   border-color: var(--forest);
   color: var(--paper);
 }
-.booking-panel.content-card::before, .service-final .content-card::before {
+.booking-panel.content-card::before, .service-page .content-card::before {
   background: var(--sage);
 }
-.booking-panel .button-solid, .service-final .content-card .button-solid {
+.booking-panel .button-solid, .service-page .content-card .button-solid {
   background: var(--paper);
   border-color: var(--paper);
   color: var(--forest);
 }
-.booking-panel .button-solid:hover, .service-final .content-card .button-solid:hover {
+.booking-panel .button-solid:hover, .service-page .content-card .button-solid:hover {
   background: var(--sage);
   border-color: var(--sage);
 }
-.booking-panel a:focus-visible, .service-final .content-card a:focus-visible {
+.booking-panel a:focus-visible, .service-page .content-card a:focus-visible {
   outline: 2px solid var(--paper);
   outline-offset: 5px;
 }
