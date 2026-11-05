@@ -62,7 +62,7 @@ document.getElementById('brief-form').addEventListener('submit', event => {
   if (!company) return;
   const subject = 'Colo-Migo project inquiry — ' + company;
   const body = [
-    'Hello LeRoy,', '', 'I would like to discuss a project.',
+    'Hello Colo-Migo team,', '', 'I would like to discuss a project.',
     '', 'Company: ' + company,
     'Project type: ' + value('project'),
     'Preferred market: ' + (value('market') || 'To be determined'),
@@ -98,7 +98,7 @@ if (schedulingUrl) {
   bookCall.rel = 'noopener noreferrer';
   bookCall.childNodes[0].textContent = 'Choose a time ';
   document.getElementById('booking-description').textContent =
-    'Find a time that works for you. We’ll discuss your project, answer your questions, and agree on a useful next step.';
+    'The Colo-Migo team reviews project requirements, addresses questions, and helps define a useful next step. Choose a convenient time to begin.';
   document.getElementById('booking-note').textContent =
     'Opens Calendly in a new tab. Times are shown in your local time zone.';
 }
