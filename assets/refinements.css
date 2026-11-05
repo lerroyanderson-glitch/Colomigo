@@ -100,6 +100,7 @@
 @media (prefers-reduced-motion: reduce) { .provider-track { animation: none; width: 100%; } .provider-group { flex-wrap: wrap; gap: 16px 24px; } .provider-group[aria-hidden] { display: none; } }
 
 .scheduling { display: block; }
+.contact { background: var(--stone); }
 .about-copy, .scheduling-content, .contact-grid {
   display: grid;
   grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
