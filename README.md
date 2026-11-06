@@ -36,6 +36,10 @@ Publish the static root folder through an authorized hosting provider.
 Do not change the domain's MX, SPF, DKIM, or DMARC records when connecting the website: these support Private Email.
 The production domain is colomigo.com. Do not enable a custom-domain redirect before hosting is configured.
 
+## Evergreen buyer guides
+
+Three standalone resources under Insights complement the periodic editorial brief: `/insights/colocation-renewal-checklist/`, `/insights/data-center-relocation-checklist/`, and `/insights/colocation-quote-comparison/`. Each has a blank downloadable CSV worksheet, a table of contents, related-guide and service links, and direct Calendly booking. No form data is submitted or stored by these guides. Their shared styles are scoped in `assets/buyer-guides.css`. The Insights landing page and service pages link to them, and the sitemap and structural checker include all three routes.
+
 ## Contact behavior
 All contact links address leroy@colomigo.com. The project brief opens a pre-filled message in the visitor's email app; it does not submit to a server, save data, or promise delivery.
 The homepage and About page describe Colo-Migo's customer-facing sourcing process without naming its distribution relationship. They do not imply that Colo-Migo operates a provider's facilities or owns the service contract, billing, or delivery. No individual provider affiliations, client testimonials, or performance guarantees are claimed.

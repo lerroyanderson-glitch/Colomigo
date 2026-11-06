@@ -30,7 +30,7 @@ class Page(HTMLParser):
             if a.get(name):
                 self.refs.append(a[name])
 
-html = (ROOT / "index.html").read_text()
+html = (ROOT / "index.html").read_text(encoding="utf8")
 page = Page()
 page.feed(html)
 errors = page.errors
@@ -50,7 +50,7 @@ for phrase in ('name="viewport"', 'id="brief-form"', 'leroy@colomigo.com'):
     if phrase not in html:
         errors.append("Missing required content: " + phrase)
 ET.parse(ROOT / "assets/mark.svg")
-for route in ("about", "about/experience", "insights", "colocation-renewals", "colocation-relocations"):
+for route in ("about", "about/experience", "insights", "colocation-renewals", "colocation-relocations", "insights/colocation-renewal-checklist", "insights/data-center-relocation-checklist", "insights/colocation-quote-comparison"):
     subpage = Page()
     content = (ROOT / route / "index.html").read_text(encoding="utf8")
     subpage.feed(content)
