@@ -182,6 +182,19 @@
   outline-offset: 5px;
 }
 
+/* Homepage links to the existing buyer guides. */
+.home-resources { border-top: 1px solid var(--line); }
+.home-resources .resources-intro { max-width: 65ch; margin-top: 24px; font-size: 18px; color: var(--muted); }
+.buyer-resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1400px; margin-inline: auto; }
+.buyer-resource-grid .content-card { display: flex; flex-direction: column; align-self: stretch; min-width: 0; max-width: none; margin: 0; padding: 32px; }
+.buyer-resource-grid h3 { font-size: 32px; line-height: 1.15; margin: 0 0 18px; }
+.buyer-resource-grid p { font-size: 17px; line-height: 1.75; color: var(--muted); margin: 0 0 24px; }
+.buyer-resource-grid .service-link { margin-top: auto; align-self: flex-start; }
+@media (max-width: 900px) {
+  .buyer-resource-grid { grid-template-columns: 1fr; }
+  .buyer-resource-grid .content-card { padding: 28px; }
+}
+
 @media (min-width: 1600px) {
   .hero { min-height: 760px; }
   .hero-copy { padding-top: 79px; }
