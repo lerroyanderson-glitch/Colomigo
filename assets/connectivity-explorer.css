@@ -2,7 +2,7 @@
 .explorer-intro{max-width:72ch;font-size:18px;color:var(--muted);margin-top:24px}
 .explorer-controls{display:flex;flex-wrap:wrap;gap:18px;margin:32px 0 24px}
 .explorer-controls label{display:flex;flex-direction:column;gap:7px;font-size:12px;letter-spacing:.04em;min-width:180px;flex:1}
-.explorer-controls select{font-size:15px;background:var(--paper);padding:13px;min-height:48px}
+.explorer-controls select{font-size:16px;background:var(--paper);padding:13px;min-height:48px}
 .explorer-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:28px;align-items:start}
 .market-map{margin:0;background:var(--ink);color:var(--paper);border:1px solid var(--line);position:sticky;top:20px;overflow:hidden}
 .market-map svg{display:block;width:100%;height:auto}
@@ -20,16 +20,16 @@
 .market-marker[aria-pressed=true]{fill:#dd6257}
 .market-marker[aria-pressed=true] .market-halo{fill:#dd6257;opacity:.35}
 .market-marker:focus-visible .market-halo{opacity:.7;stroke:white;stroke-width:3}
-.market-map figcaption{padding:18px 22px;font-size:12px;color:#d4d7cd;border-top:1px solid #596257;line-height:1.7}
+.market-map figcaption{padding:18px 22px;font-size:14px;color:#d4d7cd;border-top:1px solid #596257;line-height:1.7}
 .connection-panel{padding:26px;border:1px solid var(--line);background:rgba(240,237,229,.5)}
 .service-page .connection-panel h3{font-size:32px;margin:10px 0 14px}
-#layer-summary{font-size:14px;color:var(--muted);margin-bottom:20px}
+#layer-summary{font-size:16px;color:var(--muted);margin-bottom:20px}
 .connection-card{padding:18px 0;border-top:1px solid var(--line)}
 .connection-card h4{font-family:var(--sans);font-size:17px;font-weight:600;margin:0 0 5px}
 .connection-card .connection-type{font-size:12px;color:var(--brand-red);letter-spacing:.04em;margin-bottom:10px}
-.connection-card p{font-size:14px;color:var(--muted);line-height:1.7}
-.connection-card a,.network-map-link{display:inline-block;margin-top:12px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
-.explorer-note{margin:24px 0 0;color:var(--muted);font-size:13px;max-width:100ch;line-height:1.7}
+.connection-card p{font-size:16px;color:var(--muted);line-height:1.7}
+.connection-card a,.network-map-link{display:inline-block;margin-top:12px;font-size:15px;text-decoration:underline;text-underline-offset:4px}
+.explorer-note{margin:24px 0 0;color:var(--muted);font-size:15px;max-width:100ch;line-height:1.7}
 .map-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 @media(max-width:900px){.explorer-layout{grid-template-columns:1fr}.market-map{position:static}.explorer-controls label{min-width:150px}}
 @media(max-width:480px){.explorer-controls{gap:14px}.explorer-controls label{min-width:100%}.connection-panel{padding:22px}.market-marker text{font-size:30px}.market-map .access-diagram{display:none}}

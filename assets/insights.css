@@ -106,3 +106,15 @@
 .brief-subscribe small{display:block;font-size:13px;color:var(--muted);margin-top:14px;max-width:45ch}
 @media(max-width:900px){.brief-hero-grid,.lead-take{grid-template-columns:1fr}.brief-hero-copy{max-width:850px}.signal-panel{max-width:750px}.lead-take h2{max-width:24ch}.wire-card{grid-template-columns:140px 1fr}.wire-card a{grid-column:2;justify-self:start}.brief-subscribe{grid-template-columns:1fr;gap:25px}}
 @media(max-width:600px){.signal-panel{padding:23px}.capacity-steps{gap:8px}.capacity-steps li{font-size:11px}.story-grid{gap:16px}.wire-card{grid-template-columns:1fr;gap:12px}.wire-card a{grid-column:1}.wire-card .story-meta{display:flex;gap:15px}.wire-card time{margin:0}.vote-result-heading{flex-wrap:wrap}.field-poll-result-row{gap:10px}.poll-section h2{font-size:52px}.brief-hero h1{font-size:clamp(51px,10vw,68px)}}
+
+/* Comfortable reading widths and supporting text across desktop and mobile. */
+.brief-hero-grid, .brief-editorial, .buyer-resources, .brief-news > .shell,
+.poll-layout, .next-section, .brief-subscribe { max-width:1400px; margin-inline:auto; }
+.lead-take, .poll-layout, .next-section { gap:clamp(30px,4vw,64px); }
+.lead-take-copy { max-width:70ch; }
+.story-card p { font-size:17px; }
+.take-byline, .take-context, .source-note, .wire-heading > p,
+.poll-disclosure, .poll-privacy, .brief-subscribe small { font-size:15px; line-height:1.75; }
+.story-card a, .brief-news .story-card .story-action, .wire-card a { font-size:15px; }
+.brief-head > p { font-size:18px; }
+.search-control input { font-size:16px; min-width:0; }

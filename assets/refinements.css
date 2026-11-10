@@ -26,7 +26,7 @@
 .hero { min-height: 710px; }
 .hero-copy { max-width: min(46vw, 620px); padding-top: 66px; }
 .hero h1 { font-size: clamp(64px, 6.1vw, 100px); }
-.hero-description { max-width: 370px; }
+.hero-description { max-width: 42ch; font-size: 18px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; padding-bottom: 20px; }
 .approach .section-intro { grid-template-columns: 1fr; }
 .hero-photo {
@@ -66,7 +66,7 @@
 }
 .service h3, .process-grid h3 { font-size: clamp(34px, 1.6vw, 44px); }
 .service p, .process-grid p { max-width: 55ch; font-size: clamp(17px, .75vw, 20px); }
-.service ul { max-width: 64ch; font-size: clamp(14px, .6vw, 17px); }
+.service ul { max-width: 64ch; font-size: clamp(16px, .7vw, 18px); }
 .service li { padding-block: 8px; }
 .step-detail { font-size: 12px; line-height: 1.7; letter-spacing: .1em; }
 .step-number { font-size: 34px; }
@@ -81,7 +81,7 @@
 .customer-benefits { list-style: none; padding: 0; margin: 24px 0 0; }
 .customer-benefits li { max-width: 70ch; padding-block: 14px; border-top: 1px solid var(--line); font-size: clamp(17px, .75vw, 20px); color: var(--muted); }
 .customer-benefits strong { color: var(--ink); }
-.about-story .network-note { margin-top: 18px; font-size: 13px; line-height: 1.65; }
+.about-story .network-note { margin-top: 18px; font-size: 15px; line-height: 1.65; }
 .network-note a { text-decoration: underline; text-underline-offset: 3px; }
 .founder strong { font-size: 15px; }
 .founder div > span { font-size: 14px; }
@@ -94,7 +94,7 @@
 .provider-track { display: flex; width: max-content; animation: provider-scroll 85s linear infinite; }
 .provider-group { display: flex; align-items: center; gap: 36px; list-style: none; margin: 0; padding: 24px 36px 24px 0; }
 .provider-group li { font-family: var(--sans); font-size: 19px; font-weight: 600; white-space: nowrap; color: var(--ink); }
-.provider-note { font-size: 12px; line-height: 1.6; margin-top: 12px; color: var(--muted); }
+.provider-note { font-size: 14px; line-height: 1.6; margin-top: 12px; color: var(--muted); }
 .provider-ticker:hover .provider-track, .provider-network:focus-within .provider-track, .provider-network.is-paused .provider-track { animation-play-state: paused; }
 @keyframes provider-scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .provider-track { animation: none; width: 100%; } .provider-group { flex-wrap: wrap; gap: 16px 24px; } .provider-group[aria-hidden] { display: none; } }
@@ -129,10 +129,10 @@
 .booking-panel h3 { font-size: clamp(34px, 1.6vw, 44px); margin: 19px 0; }
 .booking-panel > p:not(.eyebrow) { max-width: 52ch; font-size: clamp(17px, .75vw, 20px); color: var(--muted); }
 .booking-panel .button { margin-top: 25px; max-width: 100%; gap: 18px; }
-.booking-panel small { display: block; font-size: 13px; color: var(--muted); margin-top: 14px; }
+.booking-panel small { display: block; font-size: 15px; color: var(--muted); margin-top: 14px; }
 .contact-grid > div > p:not(.eyebrow), .contact-panel > p:not(.eyebrow) { font-size: clamp(17px, .75vw, 20px); max-width: 58ch; }
 .contact-panel h3 { font-size: clamp(34px, 1.6vw, 44px); }
-.contact-panel small, .copy-status, .contact .text-button { font-size: 13px; }
+.contact-panel small, .copy-status, .contact .text-button { font-size: 15px; }
 .section .button { font-size: 15px; min-height: 54px; }
 .content-card {
   --line: rgba(63,77,61,.3);
@@ -240,3 +240,8 @@
   .brand { gap: 8px; }
   .brand span { font-size: 30px; }
 }
+
+/* Keep the remaining homepage reading groups aligned with its 1400px sections. */
+.services.shell, .approach > .shell { max-width: 1400px; }
+main .button { max-width: 100%; white-space: normal; text-align: center; }
+.footer-bottom { font-size: 12px; line-height: 1.7; }

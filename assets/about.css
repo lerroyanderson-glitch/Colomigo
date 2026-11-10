@@ -11,29 +11,29 @@
 .company-focus li{border-top:1px solid #f0ede544}
 .company-focus li a{display:flex;justify-content:space-between;gap:20px;margin:0;padding-block:16px;font-size:15px;text-decoration:none}
 .company-focus li a:hover{text-decoration:underline}
-.company-focus>p:last-child{margin-top:22px;font-size:14px;line-height:1.8;color:#e0e5dc}
+.company-focus>p:last-child{margin-top:22px;font-size:16px;line-height:1.8;color:#e0e5dc}
 .company-focus a:focus-visible,.team-card a:focus-visible{outline-color:var(--paper)}
-.about-chapter{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(35px,7vw,120px);border-bottom:1px solid var(--line)}
+.about-chapter{max-width:1400px;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,4vw,64px);border-bottom:1px solid var(--line)}
 .about-chapter h2{margin-top:20px;max-width:15ch}
 .about-prose{max-width:75ch}
-.about-prose p{font-size:clamp(17px,1vw,20px);color:var(--muted);line-height:1.8}
+.about-prose p{font-size:clamp(18px,1.2vw,20px);color:var(--muted);line-height:1.8}
 .about-prose p+p{margin-top:20px}
 .company-principles{list-style:none;padding:0;margin:28px 0 0}
 .company-principles li{padding-block:18px;border-top:1px solid var(--line)}
 .company-principles strong{display:block;font-size:16px;margin-bottom:6px}
 .company-principles span{font-size:16px;line-height:1.8;color:var(--muted)}
 .mission-section{background:var(--forest);color:var(--paper)}
-.mission-section .shell{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(35px,7vw,120px)}
+.mission-section .shell{max-width:1400px;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,4vw,64px)}
 .mission-section h2{margin-top:20px}
 .mission-statement{font-family:var(--serif);font-size:clamp(30px,2.5vw,48px);line-height:1.2;max-width:31ch}
-.mission-detail{font-size:17px;color:#e0e5d9;margin-top:24px;max-width:60ch;line-height:1.8}
-.credentials-summary{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(35px,7vw,120px);align-items:start}
+.mission-detail{font-size:18px;color:#e0e5d9;margin-top:24px;max-width:60ch;line-height:1.8}
+.credentials-summary{max-width:1400px;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,4vw,64px);align-items:start}
 .credentials-summary h2{margin-top:20px;max-width:16ch}
 .credentials-summary-copy{max-width:65ch}
-.credentials-summary-copy p{font-size:clamp(17px,1vw,20px);line-height:1.8;color:var(--muted)}
+.credentials-summary-copy p{font-size:clamp(18px,1.2vw,20px);line-height:1.8;color:var(--muted)}
 .credentials-summary-copy p+p{margin-top:20px}
 .credentials-summary-copy .button{margin-top:28px;font-size:15px;gap:20px;text-align:left;max-width:100%}
-.credentials-summary-copy small{display:block;max-width:48ch;margin-top:14px;font-size:13px;line-height:1.7;color:var(--muted)}
+.credentials-summary-copy small{display:block;max-width:48ch;margin-top:14px;font-size:15px;line-height:1.7;color:var(--muted)}
 .team-section{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center;gap:clamp(32px,4vw,64px);max-width:1400px;border-top:1px solid var(--line);padding-bottom:48px}
 .team-heading{display:block}
 .team-heading h2{margin-top:20px;max-width:17ch}
